@@ -1,5 +1,7 @@
 # Smart Support Desk
 
+[![Django checks and integration](https://github.com/tayma-ops/smart-support-system/actions/workflows/ci.yml/badge.svg)](https://github.com/tayma-ops/smart-support-system/actions/workflows/ci.yml)
+
 ## Project Overview
 
 Smart Support Desk turns scattered customer requests into scoped, traceable support workflows. Customers track tickets and conversations; support teams manage ownership, private notes and human-reviewed AI drafts in one bilingual workspace.
@@ -272,6 +274,6 @@ Saudi Arabia 🇸🇦
 
 GitHub: [https://github.com/tayma-ops](https://github.com/tayma-ops)
 
-LinkedIn: [Add LinkedIn Profile URL]
+LinkedIn: [Atallah Alrashoud](https://www.linkedin.com/in/%D8%B9%D8%B7%D8%A7%D9%84%D9%84%D9%87-%D8%A7%D9%84%D8%B1%D8%B4%D9%88%D8%AF-4586a2338)
 
 MIT licensed; see [LICENSE](LICENSE). Contributions: [CONTRIBUTING.md](CONTRIBUTING.md).
