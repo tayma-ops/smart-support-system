@@ -299,7 +299,7 @@ docker compose stop
 
 `verify_worker.py` creates and removes only its own synthetic records in a PostgreSQL debug database and requires a real worker with eager mode disabled. Its default mode verifies explicit no-key behavior; `--expect-analysis` verifies a configured real model. Do not run it against production.
 
-**Local verification limit:** Docker and WSL are not installed, so Compose has not run here. PostgreSQL/Redis/Celery, local model inference and local SMTP were tested natively. CI now includes Compose startup, the containerized worker round trip and a real HTTP workflow; review its result after uploading the repository.
+**Verification:** Docker was not installed or run on the Windows workstation. The published [GitHub Actions run](https://github.com/tayma-ops/smart-support-system/actions/runs/41319932659) successfully built the image, started Compose, exercised a containerized worker and completed the HTTP workflow on Linux. PostgreSQL/Redis/Celery, real local-model inference and local SMTP were also tested natively. This is a development-stack check, not a public production deployment.
 
 ## Environment variables
 
@@ -350,7 +350,7 @@ The HTTP smoke check requires a running local development server and creates/rem
 
 The tests cover registration/credential validation, JWT rotation/revocation, sessions and CSRF, role escalation attempts, object ID access, scoped lists/statistics/filter choices, assignment, status timestamps, replies/internal notes, notifications after access changes, private attachments and forged uploads, AI validation/fallback/leases, broker outages, email idempotence under ordinary retries, real template rendering, admin boundaries, and idempotent demo seeding.
 
-GitHub Actions runs the suite against PostgreSQL, validates the schema, builds Docker, and executes a real Redis/Celery worker round trip. A configured workflow is not a claim that a remote run has passed.
+GitHub Actions runs the suite against PostgreSQL, validates the schema, builds Docker, and executes a real Redis/Celery worker round trip. Both the `test` and `docker` jobs passed in the [first remote run](https://github.com/tayma-ops/smart-support-system/actions/runs/41319932659), including all 83 PostgreSQL tests.
 
 To reproduce the full worker/email integration check against your PostgreSQL and Redis development services:
 
@@ -411,7 +411,7 @@ schema.yaml               Generated OpenAPI snapshot
 ## Future improvements and explicit limits
 
 - Attachments belong to tickets, rather than individual replies. Malware scanning and external private object storage are future work.
-- Docker/Compose execution, cloud AI, external SMTP delivery and browser/mobile visual QA still require the corresponding environment. Local model inference, native PostgreSQL/Redis/Celery and local SMTP protocol delivery have been verified.
+- Cloud AI, external mailbox delivery and browser/mobile visual QA still require the corresponding environment. Linux Docker/Compose passed in GitHub Actions; real local inference, native PostgreSQL/Redis/Celery and local SMTP protocol delivery were verified separately.
 - Add SLA policies, account email verification, MFA, a knowledge base, WebSockets, and provider evaluation datasets only when required.
 - Add a privacy/retention policy and operational backups before real customer use.
 

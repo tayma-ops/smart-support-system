@@ -1,5 +1,19 @@
 # Verification record
 
+## Published repository and GitHub Actions
+
+The public repository is [tayma-ops/smart-support-system](https://github.com/tayma-ops/smart-support-system), on `main`. The initial application commit is `e629738ca376b3b34397be72ff5f10c873fa6d1c`. Its [first CI run, 41319932659](https://github.com/tayma-ops/smart-support-system/actions/runs/41319932659), completed successfully on 1 November 2026:
+
+| Job | Observed result |
+| --- | --- |
+| `test` | 83 PostgreSQL tests passed in 3.651 seconds; dependencies, translation compilation, lint/format checks, Django/migration checks, OpenAPI validation and static collection passed |
+| Worker/SMTP integration in `test` | Real PostgreSQL → Redis → Celery no-key fallback and a synthetic notification accepted by a local SMTP sink |
+| `docker` | Image build and `docker compose up --build -d --wait` passed; containerized worker round trip and full HTTP smoke workflow passed; containers cleaned up |
+
+These results establish Linux CI and Docker development-stack execution. They supersede the earlier pre-publication statements below about Docker/remote CI being unverified. Docker was not installed on the Windows workstation. The remote CI model check uses explicit no-key behavior; real local-model inference was verified separately on Windows. Browser visual QA, cloud inference, external mailbox delivery and public application deployment remain unverified.
+
+Before the first push, all 130 Git index blobs were scanned for actual local secrets, demo passwords and common private-key/token patterns. Runtime files and local data were excluded. Local evidence: `.local/staged-release-scan.json`, `.local/github-first-ci.json` and `.local/github-first-ci.log`.
+
 ## Final application completion
 
 After the clean-install review below, three regression tests were added for browser claiming: an employee's own ticket in another department does not expose a claim control, eligible claiming succeeds, and a validation race displays a message instead of raising HTTP 500. The corresponding permission helper, view and template were fixed without changing domain visibility or assignment services.
@@ -77,9 +91,9 @@ Beat's minute recovery dispatch and the worker's successful handling were observ
 
 See `docs/LOCAL-SETUP.ar.md` for this checkout's ports, local artifacts and restart instructions. These are development processes, not installed production services.
 
-## Not verified here
+## Remaining verification limits
 
-- Docker image/Compose execution: Docker and WSL are not installed. The workflow now includes container startup, a containerized worker round trip and HTTP smoke tests, but no remote run was triggered.
+- Docker execution on the original Windows workstation: not performed. Linux image/Compose execution passed in the published CI run above.
 - OpenAI cloud inference: its adapter was contract-tested with mocks; no cloud key was supplied. Real local inference was verified separately.
 - Delivery to an external mailbox: SMTP protocol delivery was verified locally, not with a real external provider/account.
 - Desktop/mobile browser visual QA: the browser access host was unavailable. Computer Use stopped because it could not determine the Windows browser URL confidently enough to enforce policy. No further UI automation was attempted. HTML/HTTP tests do not replace visual inspection, and no screenshots were invented.
@@ -103,4 +117,4 @@ See `docs/LOCAL-SETUP.ar.md` for this checkout's ports, local artifacts and rest
 
 CI action release tags were checked against their official releases: [actions/checkout v7.0.1](https://github.com/actions/checkout/releases/tag/v7.0.1) and [actions/setup-python v7.1.0](https://github.com/actions/setup-python/releases/tag/v7.1.0). This verifies tag existence, not remote workflow success.
 
-The repository is initialized locally. No remote, commit or push has been created.
+The source has been committed and pushed to the real public `origin` above. Earlier local-only records describe the state before this publication.

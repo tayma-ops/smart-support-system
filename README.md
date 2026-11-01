@@ -11,9 +11,9 @@ A Python / Django portfolio project with **PostgreSQL, a scoped REST API, Redis,
 - **Access control:** customers see their own tickets; employees work within assigned tickets and department queues; administrators manage the workspace.
 - **Reliable workflows:** transactional services, PostgreSQL row locks, audit events and background-job recovery after broker outages.
 - **Human-reviewed AI:** summaries, suggested triage and editable drafts; generated text is never sent to customers automatically.
-- **Verification:** 83 PostgreSQL tests, including concurrency and security cases; real native customer/staff HTTP, worker, local-model and SMTP integration checks. See the [verification record](docs/VERIFICATION.md).
+- **Verification:** 83 PostgreSQL tests, including concurrency and security cases; native customer/staff HTTP, local-model and SMTP checks; and a [successful GitHub Actions run](https://github.com/tayma-ops/smart-support-system/actions/runs/41319932659) covering Linux tests, Docker Compose and worker/HTTP integration. See the [verification record](docs/VERIFICATION.md).
 
-Docker execution and browser visual QA remain unverified here. No deployment or remote CI result is claimed.
+Docker Compose and Linux CI have been verified on GitHub Actions. Browser visual QA and screenshots remain pending; no public application deployment is claimed.
 
 [Engineering guide](docs/ENGINEERING.md) · [API reference](docs/ENGINEERING.md#rest-api) · [Screenshot plan](docs/screenshots/README.md) · [Arabic readiness report](docs/GITHUB-READINESS.ar.md)
 
@@ -23,7 +23,7 @@ Docker execution and browser visual QA remain unverified here. No deployment or 
 - **PostgreSQL workflows:** relational constraints, transactional services and row locks protect assignment and concurrent updates.
 - **Background and scheduled tasks:** Redis and Celery process AI analysis and notifications; Celery beat schedules pending-job recovery and expired-token cleanup.
 - **AI-assisted workflow with human review:** staff review and edit generated suggestions before explicitly sending a response. AI drafts are never sent automatically.
-- **Engineering and security:** automated tests cover permissions, concurrency and failure handling. CSRF protection, private uploads, environment-based secrets and production-oriented HTTPS/Gunicorn configuration support a deployable design. Public deployment and Docker execution still require verification.
+- **Engineering and security:** automated tests cover permissions, concurrency and failure handling. CSRF protection, private uploads, environment-based secrets and production-oriented HTTPS/Gunicorn configuration support a deployable design. Docker startup is verified in CI; public deployment still requires operational review.
 
 ## Features
 
@@ -154,7 +154,7 @@ docker compose exec web python manage.py seed_demo
 
 The optional seed requires debug mode. Compose starts PostgreSQL, Redis, Django, worker and beat after a one-shot migration/static collection service. App containers run without root; named volumes persist data and private media. Only web port 8000 is exposed, on loopback; free that port first.
 
-Compose uses its own database and overrides native connection addresses/eager mode. If reusing a native local-model `.env`, follow the [container AI notes](docs/ENGINEERING.md#docker): loopback inside a container refers to that container. The supplied stack targets local HTTP development; public hosting needs reviewed HTTPS configuration. Docker has not run on this machine.
+Compose uses its own database and overrides native connection addresses/eager mode. If reusing a native local-model `.env`, follow the [container AI notes](docs/ENGINEERING.md#docker): loopback inside a container refers to that container. The supplied stack targets local HTTP development; public hosting needs reviewed HTTPS configuration. Image build, Compose startup and containerized worker/HTTP smoke checks passed on GitHub Actions Linux. Docker was not installed or run on the original Windows workstation.
 
 ## Configuration
 
@@ -218,7 +218,7 @@ python scripts/verify_worker_stack.py
 python scripts/verify_worker_stack.py --with-ai
 ```
 
-These checks create/remove their own synthetic records. Worker checks use a private queue and local SMTP sink; no external email is sent. `--with-ai` calls the configured real provider. GitHub Actions runs PostgreSQL tests, static checks, worker integration and Docker smoke checks on push/PR without repository secrets. It has not run remotely here.
+These checks create/remove their own synthetic records. Worker checks use a private queue and local SMTP sink; no external email is sent. `--with-ai` calls the configured real provider. GitHub Actions runs PostgreSQL tests, static checks, worker integration and Docker smoke checks on push/PR without repository secrets. Both jobs passed in the [first published CI run](https://github.com/tayma-ops/smart-support-system/actions/runs/41319932659).
 
 ## Security
 
@@ -260,7 +260,7 @@ docs/            Engineering, verification, screenshot plan and Arabic reports
 
 ## Next steps
 
-Run Docker/remote CI and capture real desktop/mobile screenshots. Evaluate a stronger local model with representative cases. Production extensions include email verification/MFA, malware scanning, monitoring, retention policies and tested backup restoration. These are future work.
+Capture real desktop/mobile screenshots and complete browser visual QA. Evaluate a stronger local model with representative cases. Production extensions include email verification/MFA, malware scanning, monitoring, retention policies and tested backup restoration. These are future work.
 
 ## Developer
 
