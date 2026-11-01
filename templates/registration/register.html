@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}
+  {% translate "Create your account · Smart Support Desk" %}
+{% endblock %}
+{% block content %}
+  <div class="auth-layout">
+    <section class="auth-story">
+      <div class="eyebrow">{% translate "LET’S GET YOU SET UP" %}</div>
+      <h1>
+        {% translate "Help is just a" %}
+        <br>
+        {% translate "conversation away." %}
+      </h1>
+      <p>{% translate "Create your customer account to ask a question, share an issue, and keep track of every update." %}</p>
+      <div class="auth-benefits">
+        <div>
+          {% include "partials/icon.html" with name="check-circle" %}
+          {% translate "All your conversations in one place" %}
+        </div>
+        <div>
+          {% include "partials/icon.html" with name="check-circle" %}
+          {% translate "Updates as your request moves forward" %}
+        </div>
+        <div>
+          {% include "partials/icon.html" with name="check-circle" %}
+          {% translate "A support team on the other side" %}
+        </div>
+      </div>
+    </section>
+    <section class="auth-card">
+      <span class="small-label">{% translate "A LITTLE INTRODUCTION" %}</span>
+      <h2>{% translate "Create your account" %}</h2>
+      <form method="post">
+        {% csrf_token %}
+        {% include "partials/form_fields.html" %}
+        <button class="button button-primary full-width" type="submit">
+          {% translate "Create account" %}
+          {% include "partials/icon.html" with name="arrow" %}
+        </button>
+      </form>
+      <p class="auth-switch">{% translate "Already have an account?" %} <a href="{% url 'login' %}">{% translate "Sign in" %}</a></p>
+    </section>
+  </div>
+{% endblock %}

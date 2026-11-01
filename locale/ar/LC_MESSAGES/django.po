@@ -1,0 +1,1158 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Support Desk 1.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+
+msgid "%(ticket)s was created."
+msgstr "تم إنشاء التذكرة %(ticket)s."
+
+msgid "%(ticket)s: %(status)s."
+msgstr "%(ticket)s: %(status)s."
+
+msgid "A BETTER WAY TO BE THERE"
+msgstr "دعم أفضل، وحضور أقرب"
+
+msgid "A FRESH START"
+msgstr "بداية جديدة"
+
+msgid "A LITTLE FOCUS GOES A LONG WAY"
+msgstr "القليل من التركيز يصنع فرقًا"
+
+msgid "A LITTLE INTRODUCTION"
+msgstr "لنتعرّف إليك"
+
+msgid ""
+"A calmer workspace for customer support. Manage tickets, collaborate with "
+"your team and review AI-assisted drafts."
+msgstr ""
+"مساحة عمل أكثر تنظيمًا لدعم العملاء. أدِر التذاكر وتعاون مع فريقك وراجع "
+"مسودات الردود بمساعدة الذكاء الاصطناعي."
+
+msgid "A clear view of what needs attention and what’s already taken care of."
+msgstr "رؤية واضحة لما يحتاج إلى المتابعة وما تم إنجازه."
+
+msgid "A clear view of your work"
+msgstr "رؤية واضحة لعملك"
+
+msgid "A clearer queue."
+msgstr "وتذاكر أكثر تنظيمًا."
+
+msgid ""
+"A documented REST API with JWT authentication and interactive OpenAPI "
+"documentation."
+msgstr "واجهة REST API موثقة مع مصادقة JWT وتوثيق OpenAPI تفاعلي."
+
+msgid "A fresh start."
+msgstr "بداية جديدة."
+
+msgid "A good password keeps your workspace yours."
+msgstr "كلمة المرور القوية تحمي مساحة عملك."
+
+msgid "A good ticket goes a long way."
+msgstr "التفاصيل الواضحة تسرّع الحل."
+
+msgid "A human touch."
+msgstr "ولمسة إنسانية."
+
+msgid "A little about you"
+msgstr "نبذة عنك"
+
+msgid "A little closer to resolved"
+msgstr "خطوة أقرب إلى الحل"
+
+msgid "A little intelligence."
+msgstr "مساعدة ذكية."
+
+msgid "A question worth answering"
+msgstr "كل سؤال يستحق إجابة"
+
+msgid "A short, clear description of the issue"
+msgstr "وصف قصير وواضح للمشكلة"
+
+msgid "A small detour."
+msgstr "الصفحة غير موجودة."
+
+msgid "A starting point for your reply"
+msgstr "نقطة بداية لردك"
+
+msgid "A support team on the other side"
+msgstr "فريق دعم يتابع طلبك"
+
+msgid ""
+"A thoughtful workspace for your support team. Bring conversations together, "
+"find clarity with AI, and give every customer the attention they deserve."
+msgstr ""
+"مساحة عمل لفريق الدعم تجمع المحادثات وتوضّح الأولويات بمساعدة الذكاء "
+"الاصطناعي، ليحصل كل عميل على الاهتمام الذي يستحقه."
+
+msgid "A ticket can have at most 10 attachments."
+msgstr "يمكن إرفاق 10 ملفات كحد أقصى بكل تذكرة."
+
+msgid "A view of what matters most"
+msgstr "رؤية للأولويات الأهم"
+
+msgid "ACCOUNT SECURITY"
+msgstr "أمان الحساب"
+
+msgid "ADMIN WORKSPACE"
+msgstr "مساحة إدارة النظام"
+
+msgid ""
+"AI assistance is off. An administrator can enable an AI provider and model. "
+"You can manage and reply to this ticket as usual."
+msgstr ""
+"مساعدة الذكاء الاصطناعي متوقفة. يمكن للمسؤول تفعيل مزود للذكاء الاصطناعي "
+"ونموذج. يمكنك إدارة هذه التذكرة والرد عليها كالمعتاد."
+
+msgid "AI drafts. Your team decides."
+msgstr "الذكاء الاصطناعي يقترح، وفريقك يقرر."
+
+msgid "AI not configured"
+msgstr "المساعدة الذكية غير مهيأة"
+
+msgid ""
+"AI suggestions are drafts. A support employee reviews and sends every "
+"response."
+msgstr ""
+"اقتراحات الذكاء الاصطناعي مسودات فقط. يراجع موظف الدعم كل رد ويرسله بنفسه."
+
+msgid "AI-generated ·"
+msgstr "مسودة مولّدة بالذكاء الاصطناعي ·"
+
+msgid "API documentation"
+msgstr "توثيق API"
+
+msgid "Access restricted · Smart Support Desk"
+msgstr "الوصول مقيّد · Smart Support Desk"
+
+msgid "Access with boundaries"
+msgstr "صلاحيات واضحة"
+
+msgid "Account"
+msgstr "الحساب"
+
+msgid "Account Support"
+msgstr "دعم الحسابات"
+
+msgid "Account details"
+msgstr "تفاصيل الحساب"
+
+msgid "Across your workspace"
+msgstr "في مساحة عملك"
+
+msgid "Active tickets, with the highest priorities first"
+msgstr "التذاكر النشطة، بدءًا بالأعلى أولوية"
+
+msgid "Add a file"
+msgstr "إضافة ملف"
+
+msgid "Add a screenshot if it helps."
+msgstr "أرفق صورة للشاشة إذا كانت مفيدة."
+
+msgid "Administration"
+msgstr "إدارة النظام"
+
+msgid "Administrator"
+msgstr "مدير النظام"
+
+msgid "All"
+msgstr "الكل"
+
+msgid "All clear here"
+msgstr "لا توجد تذاكر هنا"
+
+msgid "All time, in your scope"
+msgstr "جميع الفترات ضمن صلاحياتك"
+
+msgid "All your conversations in one place"
+msgstr "كل محادثاتك في مكان واحد"
+
+msgid "Already have an account?"
+msgstr "لديك حساب بالفعل؟"
+
+msgid "An account with this email already exists."
+msgstr "يوجد حساب مسجّل بهذا البريد الإلكتروني بالفعل."
+
+msgid "An administrator can retry with"
+msgstr "يمكن لمدير النظام إعادة المحاولة بالأمر"
+
+msgid "Analysis ready"
+msgstr "التحليل جاهز"
+
+msgid "Analysis unavailable"
+msgstr "التحليل غير متاح"
+
+msgid "Analytics"
+msgstr "التحليلات"
+
+msgid "Analytics · Smart Support Desk"
+msgstr "التحليلات · Smart Support Desk"
+
+msgid "Analyzing"
+msgstr "جارٍ التحليل"
+
+msgid "Apply filters"
+msgstr "تطبيق التصفية"
+
+msgid ""
+"Assign ownership, collaborate through private notes, and keep customers "
+"informed as things move forward."
+msgstr ""
+"حدّد المسؤول عن كل تذكرة، وتعاون عبر الملاحظات الخاصة، وأطلِع العملاء على "
+"تقدم طلباتهم."
+
+msgid "Assign to me"
+msgstr "إسنادها إليّ"
+
+msgid "Assigned to"
+msgstr "الموظف المسؤول"
+
+msgid "Assignment updated"
+msgstr "تم تحديث الإسناد"
+
+msgid "Assignment updated for %(ticket)s."
+msgstr "تم تحديث إسناد التذكرة %(ticket)s."
+
+msgid "Attachment"
+msgstr "مرفق"
+
+msgid "Attachments"
+msgstr "المرفقات"
+
+msgid "Attachments must be 5 MB or smaller."
+msgstr "يجب ألا يتجاوز حجم المرفق 5 ميجابايت."
+
+msgid "Average resolution"
+msgstr "متوسط وقت الحل"
+
+msgid "BUILT WITH INTENTION"
+msgstr "أساس متين لكل خطوة"
+
+msgid "Back to profile"
+msgstr "العودة إلى الملف الشخصي"
+
+msgid "Back to sign in"
+msgstr "العودة إلى تسجيل الدخول"
+
+msgid "Back to your workspace"
+msgstr "العودة إلى مساحة عملك"
+
+msgid "Behind every ticket,"
+msgstr "وراء كل تذكرة،"
+
+msgid "Billing"
+msgstr "الفوترة"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Category"
+msgstr "الفئة"
+
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+msgid "Check your inbox"
+msgstr "تحقّق من بريدك الوارد"
+
+msgid "Clarity before you reply."
+msgstr "فهم أوضح قبل الرد."
+
+msgid "Clarity in every number"
+msgstr "رؤية أوضح من كل رقم"
+
+msgid "Close navigation"
+msgstr "إغلاق قائمة التنقل"
+
+msgid "Close this ticket"
+msgstr "إغلاق هذه التذكرة"
+
+msgid "Closed"
+msgstr "مغلقة"
+
+msgid "Closed tickets cannot receive attachments."
+msgstr "لا يمكن إضافة مرفقات إلى التذاكر المغلقة."
+
+msgid ""
+"Closed tickets cannot receive replies. Ask support to reopen the ticket."
+msgstr "لا يمكن الرد على تذكرة مغلقة. اطلب من فريق الدعم إعادة فتحها."
+
+msgid "Complaint"
+msgstr "شكوى"
+
+msgid "Conversation"
+msgstr "المحادثة"
+
+msgid "Create a new ticket if you need more help."
+msgstr "أنشئ تذكرة جديدة إذا كنت تحتاج إلى مساعدة إضافية."
+
+msgid "Create a ticket"
+msgstr "إنشاء تذكرة"
+
+msgid "Create account"
+msgstr "إنشاء الحساب"
+
+msgid "Create an account"
+msgstr "إنشاء حساب"
+
+msgid "Create ticket"
+msgstr "إرسال التذكرة"
+
+msgid "Create your account"
+msgstr "أنشئ حسابك"
+
+msgid "Create your account · Smart Support Desk"
+msgstr "إنشاء حساب · Smart Support Desk"
+
+msgid ""
+"Create your customer account to ask a question, share an issue, and keep "
+"track of every update."
+msgstr "أنشئ حساب عميل لطرح أسئلتك وتقديم مشكلاتك ومتابعة كل تحديث."
+
+msgid "Created"
+msgstr "تاريخ الإنشاء"
+
+msgid "Created from"
+msgstr "تاريخ الإنشاء من"
+
+msgid "Created through"
+msgstr "تاريخ الإنشاء إلى"
+
+msgid "Created to resolved · current resolutions"
+msgstr "من الإنشاء إلى الحل · للتذاكر المحلولة حاليًا"
+
+msgid "Customer"
+msgstr "عميل"
+
+msgid "Customer sentiment"
+msgstr "انطباع العميل"
+
+msgid "Customer · Original request"
+msgstr "العميل · الطلب الأصلي"
+
+msgid ""
+"Customers create tickets and follow the conversation from the first question"
+" to the final resolution."
+msgstr "ينشئ العملاء تذاكرهم ويتابعون المحادثة من أول سؤال إلى اكتمال الحل."
+
+msgid "Customers may only close their tickets."
+msgstr "يمكن للعميل إغلاق تذاكره فقط."
+
+msgid ""
+"Customers see their own tickets. Support teams work within their assigned "
+"scope."
+msgstr "يرى العملاء تذاكرهم فقط، وتعمل فرق الدعم ضمن نطاق صلاحياتها."
+
+msgid "Daily ticket volume; data is listed below."
+msgstr "عدد التذاكر يوميًا؛ البيانات مدرجة أدناه."
+
+msgid "Date"
+msgstr "التاريخ"
+
+msgid "Delivery"
+msgstr "التسليم"
+
+msgid "Department"
+msgstr "القسم"
+
+msgid "Departments"
+msgstr "الأقسام"
+
+msgid "Describe what actually happened."
+msgstr "اشرح ما حدث بالفعل."
+
+msgid "Description"
+msgstr "التفاصيل"
+
+msgid "Disabled"
+msgstr "معطّل"
+
+msgid "EVERY CONVERSATION COUNTS"
+msgstr "كل محادثة تستحق الاهتمام"
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "Enable JavaScript for charts, or view the"
+msgstr "فعّل JavaScript لعرض الرسوم، أو افتح"
+
+msgid "Enter between 1 and %(limit)s characters."
+msgstr "أدخل نصًا يتراوح طوله بين حرف واحد و%(limit)s حرفًا."
+
+msgid ""
+"Enter the email linked to your account. We’ll send a secure reset link if "
+"the account exists."
+msgstr ""
+"أدخل البريد المرتبط بحسابك. سنرسل رابطًا آمنًا للاستعادة إذا كان الحساب "
+"موجودًا."
+
+msgid "Every request, in one place."
+msgstr "كل الطلبات في مكان واحد."
+
+msgid "Excludes resolved and closed"
+msgstr "باستثناء المحلولة والمغلقة"
+
+msgid "Explore the API"
+msgstr "استكشف API"
+
+msgid "Explore tickets"
+msgstr "استعراض التذاكر"
+
+msgid "Failed"
+msgstr "فشل"
+
+msgid "Forgot your password?"
+msgstr "نسيت كلمة المرور؟"
+
+msgid "General Support"
+msgstr "الدعم العام"
+
+msgid "General inquiry"
+msgstr "استفسار عام"
+
+msgid "General queue"
+msgstr "قائمة الدعم العامة"
+
+msgid "Get started"
+msgstr "ابدأ الآن"
+
+msgid "Give us a little context. We’ll take it from there."
+msgstr "أخبرنا ببعض التفاصيل، وسنتابع طلبك."
+
+msgid "Good support."
+msgstr "دعم جيد."
+
+msgid "Good to have you here."
+msgstr "يسعدنا وجودك هنا."
+
+msgid "Good to see you,"
+msgstr "مرحبًا بعودتك،"
+
+msgid "Help is just a"
+msgstr "المساعدة تبدأ"
+
+msgid "Here’s where things stand. Let’s move a few things forward."
+msgstr "إليك آخر المستجدات. لنواصل العمل على الطلبات."
+
+msgid "High"
+msgstr "مرتفعة"
+
+msgid "Highest priority"
+msgstr "الأعلى أولوية"
+
+msgid "How can we help?"
+msgstr "كيف يمكننا مساعدتك؟"
+
+msgid ""
+"If an active account matches that email, a password reset link is on its "
+"way. Check your spam folder too."
+msgstr ""
+"إذا كان البريد مرتبطًا بحساب نشط، فسيصلك رابط استعادة كلمة المرور. تحقّق "
+"أيضًا من البريد غير المرغوب فيه."
+
+msgid ""
+"If you did not request this, ignore this email. Your password has not "
+"changed."
+msgstr "إذا لم تطلب ذلك، فتجاهل هذه الرسالة. لم تتغير كلمة مرورك."
+
+msgid "In progress"
+msgstr "قيد المعالجة"
+
+msgid "Include steps to reproduce the issue."
+msgstr "اذكر الخطوات التي تؤدي إلى ظهور المشكلة."
+
+msgid "Internal note"
+msgstr "ملاحظة داخلية"
+
+msgid "Internal note · visible to support staff only"
+msgstr "ملاحظة داخلية · تظهر لموظفي الدعم فقط"
+
+msgid "Invalid image or image exceeds 25 megapixels."
+msgstr "الصورة غير صالحة أو تتجاوز 25 مليون بكسل."
+
+msgid "Keep the conversation going"
+msgstr "أضف إلى المحادثة"
+
+msgid "Keep your details up to date."
+msgstr "حافظ على تحديث معلوماتك."
+
+msgid "LET’S GET YOU SET UP"
+msgstr "لنجهّز حسابك"
+
+msgid "LET’S WORK THROUGH IT"
+msgstr "لنحلّ المشكلة معًا"
+
+msgid "Last updated"
+msgstr "آخر تحديث"
+
+msgid "Let support route my ticket"
+msgstr "دع فريق الدعم يحدد القسم المناسب"
+
+msgid "Live metrics from the tickets you’re permitted to see."
+msgstr "مؤشرات فعلية من التذاكر التي تسمح صلاحياتك بعرضها."
+
+msgid ""
+"Live statistics from your ticket data, including volume, priorities and "
+"resolution time."
+msgstr "إحصاءات فعلية من بيانات التذاكر، تشمل العدد والأولويات ووقت الحل."
+
+msgid "Low"
+msgstr "منخفضة"
+
+msgid "MANAGE"
+msgstr "الإدارة"
+
+msgid "Made for people. Built with Django."
+msgstr "صُمّم لخدمة الناس. وبُني باستخدام Django."
+
+msgid "Make room for"
+msgstr "امنح اهتمامك"
+
+msgid "Medium"
+msgstr "متوسطة"
+
+msgid "Member since"
+msgstr "تاريخ الانضمام"
+
+msgid "Message"
+msgstr "الرسالة"
+
+msgid "Moving toward a resolution"
+msgstr "في طريقها إلى الحل"
+
+msgid "My profile"
+msgstr "ملفي الشخصي"
+
+msgid "My profile · Smart Support Desk"
+msgstr "الملف الشخصي · Smart Support Desk"
+
+msgid "Negative"
+msgstr "سلبي"
+
+msgid "Neutral"
+msgstr "محايد"
+
+msgid "New around here?"
+msgstr "ليس لديك حساب؟"
+
+msgid "New reply on %(ticket)s."
+msgstr "رد جديد على التذكرة %(ticket)s."
+
+msgid "New ticket"
+msgstr "تذكرة جديدة"
+
+msgid "New ticket · Smart Support Desk"
+msgstr "تذكرة جديدة · Smart Support Desk"
+
+msgid "Newest first"
+msgstr "الأحدث أولًا"
+
+msgid "Next"
+msgstr "التالي"
+
+msgid "No AI-generated results are shown."
+msgstr "لا توجد نتائج مولّدة بالذكاء الاصطناعي."
+
+msgid "No activity in this period."
+msgstr "لا يوجد نشاط خلال هذه الفترة."
+
+msgid "No attachments yet."
+msgstr "لا توجد مرفقات بعد."
+
+msgid "No departments assigned"
+msgstr "لم تُحدّد أقسام بعد"
+
+msgid "No tickets created in this period."
+msgstr "لم تُنشأ تذاكر خلال هذه الفترة."
+
+msgid "No tickets match this view."
+msgstr "لا توجد تذاكر مطابقة لهذا العرض."
+
+msgid "No urgent tickets in your queue. A good moment to keep things moving."
+msgstr "لا توجد تذاكر عاجلة في قائمتك. يمكنك متابعة بقية الطلبات."
+
+msgid "Notifications"
+msgstr "الإشعارات"
+
+msgid "Notifications · Smart Support Desk"
+msgstr "الإشعارات · Smart Support Desk"
+
+msgid "Oldest first"
+msgstr "الأقدم أولًا"
+
+msgid "One less thing to worry about"
+msgstr "طلبات تم الوصول فيها إلى حل"
+
+msgid "One shared workspace. Clear ownership. A human at every step."
+msgstr "مساحة عمل مشتركة. مسؤوليات واضحة. واهتمام إنساني في كل خطوة."
+
+msgid "Only PNG, JPEG and PDF files are allowed."
+msgstr "يُسمح بملفات PNG وJPEG وPDF فقط."
+
+msgid "Only administrators can delete tickets."
+msgstr "يمكن لمديري النظام فقط حذف التذاكر."
+
+msgid "Only priority, category and department can be edited here."
+msgstr "يمكن تعديل الأولوية والفئة والقسم فقط من هنا."
+
+msgid "Only support staff can add internal notes."
+msgstr "يمكن لموظفي الدعم فقط إضافة ملاحظات داخلية."
+
+msgid "Only support staff can assign tickets."
+msgstr "يمكن لموظفي الدعم فقط إسناد التذاكر."
+
+msgid "Only support staff can edit triage fields."
+msgstr "يمكن لموظفي الدعم فقط تعديل التصنيف والأولوية."
+
+msgid "Only you and your support team can access your tickets."
+msgstr "يمكنك أنت وفريق الدعم فقط الوصول إلى تذاكرك."
+
+msgid "Open"
+msgstr "مفتوحة"
+
+msgid "Open tickets"
+msgstr "التذاكر المفتوحة"
+
+msgid "Open to integration"
+msgstr "جاهزة للتكامل"
+
+msgid "Opened by"
+msgstr "أنشأها"
+
+msgid "Other"
+msgstr "أخرى"
+
+msgid "Overview"
+msgstr "نظرة عامة"
+
+msgid "Overview · Smart Support Desk"
+msgstr "نظرة عامة · Smart Support Desk"
+
+msgid "PNG, JPEG or PDF · 5 MB maximum"
+msgstr "PNG أو JPEG أو PDF · بحد أقصى 5 ميجابايت"
+
+msgid "PNG, JPEG or PDF. Maximum 5 MB."
+msgstr "PNG أو JPEG أو PDF. بحد أقصى 5 ميجابايت."
+
+msgid "Page"
+msgstr "صفحة"
+
+msgid "Page not found · Smart Support Desk"
+msgstr "الصفحة غير موجودة · Smart Support Desk"
+
+msgid "Pagination"
+msgstr "التنقل بين الصفحات"
+
+msgid "Password updated"
+msgstr "تم تحديث كلمة المرور"
+
+msgid "Pending"
+msgstr "قيد الانتظار"
+
+msgid "People stay in control"
+msgstr "القرار يبقى للموظف"
+
+msgid "Pick up where you left off and make someone’s day a little easier."
+msgstr "تابع من حيث توقفت، وساعد عملاءك على تجاوز مشكلاتهم."
+
+msgid "Please leave out passwords, payment details and other secrets."
+msgstr "لا تُدرج كلمات المرور أو تفاصيل الدفع أو أي بيانات سرية."
+
+msgid "Positive"
+msgstr "إيجابي"
+
+msgid "Previous"
+msgstr "السابق"
+
+msgid "Priority"
+msgstr "الأولوية"
+
+msgid "Queued for analysis"
+msgstr "بانتظار التحليل"
+
+msgid "Read update"
+msgstr "قراءة التحديث"
+
+msgid "Ready for a first response"
+msgstr "بانتظار أول رد"
+
+msgid "Ready for an owner"
+msgstr "بانتظار تحديد المسؤول"
+
+msgid "Recently updated"
+msgstr "آخر تحديث أولًا"
+
+msgid "Reopen it to continue the conversation."
+msgstr "أعد فتحها لمتابعة المحادثة."
+
+msgid "Replace your current draft with the AI suggestion?"
+msgstr "هل تريد استبدال مسودتك الحالية باقتراح الذكاء الاصطناعي؟"
+
+msgid "Replies"
+msgstr "الردود"
+
+msgid "Request a new link"
+msgstr "طلب رابط جديد"
+
+msgid "Reset"
+msgstr "إعادة ضبط"
+
+msgid "Reset your Smart Support Desk password"
+msgstr "استعادة كلمة مرور Smart Support Desk"
+
+msgid "Reset your password"
+msgstr "استعادة كلمة المرور"
+
+msgid "Resolved"
+msgstr "محلولة"
+
+msgid "Return home"
+msgstr "العودة إلى الرئيسية"
+
+msgid "Review for accuracy. Nothing is sent automatically."
+msgstr "راجع الدقة قبل الإرسال. لا يُرسل أي شيء تلقائيًا."
+
+msgid "Review your message before sending."
+msgstr "راجع رسالتك قبل إرسالها."
+
+msgid "STAY IN THE LOOP"
+msgstr "تابع المستجدات"
+
+msgid "Sales"
+msgstr "المبيعات"
+
+msgid "Save changes"
+msgstr "حفظ التغييرات"
+
+msgid "Save new password"
+msgstr "حفظ كلمة المرور الجديدة"
+
+msgid "Save triage"
+msgstr "حفظ التصنيف والأولوية"
+
+msgid "Search by subject or ticket number"
+msgstr "ابحث بالعنوان أو رقم التذكرة"
+
+msgid "Search tickets"
+msgstr "البحث في التذاكر"
+
+msgid "Security"
+msgstr "الأمان"
+
+msgid "Select a valid choice."
+msgstr "اختر قيمة صحيحة."
+
+msgid "Select a valid status."
+msgstr "اختر حالة صحيحة."
+
+msgid "Select an active department."
+msgstr "اختر قسمًا نشطًا."
+
+msgid "Select an active support employee."
+msgstr "اختر موظف دعم نشطًا."
+
+msgid "Send reply"
+msgstr "إرسال الرد"
+
+msgid "Send reset link"
+msgstr "إرسال رابط الاستعادة"
+
+msgid "Sending"
+msgstr "جارٍ الإرسال"
+
+msgid "Sent"
+msgstr "تم الإرسال"
+
+msgid "Service unavailable · Smart Support Desk"
+msgstr "الخدمة غير متاحة · Smart Support Desk"
+
+msgid "Set a new password"
+msgstr "اختر كلمة مرور جديدة"
+
+msgid "Sign in"
+msgstr "تسجيل الدخول"
+
+msgid "Sign in to your workspace"
+msgstr "سجّل الدخول إلى مساحة عملك"
+
+msgid "Sign out"
+msgstr "تسجيل الخروج"
+
+msgid "Signed in"
+msgstr "تم تسجيل الدخول"
+
+msgid "Skip to content"
+msgstr "انتقل إلى المحتوى"
+
+msgid ""
+"Smart Support Desk is temporarily unavailable. Please try again in a moment."
+msgstr "خدمة Smart Support Desk غير متاحة مؤقتًا. حاول مجددًا بعد قليل."
+
+msgid "Smart Support Desk · Great support starts here"
+msgstr "Smart Support Desk · دعم أفضل يبدأ هنا"
+
+msgid "Solid foundations."
+msgstr "وأساس متين."
+
+msgid ""
+"Someone requested a password reset for your Smart Support Desk account. Open"
+" this link to choose a new password:"
+msgstr ""
+"تلقينا طلبًا لاستعادة كلمة مرور حسابك في Smart Support Desk. افتح الرابط "
+"التالي لاختيار كلمة مرور جديدة:"
+
+msgid "Sort by"
+msgstr "الترتيب حسب"
+
+msgid "Start a conversation"
+msgstr "ابدأ محادثة"
+
+msgid "Status"
+msgstr "الحالة"
+
+msgid "Status: %(old)s → %(new)s"
+msgstr "الحالة: %(old)s ← %(new)s"
+
+msgid "Subject"
+msgstr "العنوان"
+
+msgid "Support employee"
+msgstr "موظف الدعم"
+
+msgid "Support intelligence"
+msgstr "المساعدة الذكية"
+
+msgid "Support workspace"
+msgstr "مساحة عمل الدعم"
+
+msgid "Synthetic demo ticket created"
+msgstr "تم إنشاء تذكرة عرض تجريبية"
+
+msgid "TEAM WORKSPACE"
+msgstr "مساحة عمل الفريق"
+
+msgid "THE BIGGER PICTURE"
+msgstr "الصورة الكاملة"
+
+msgid "THE SUPPORT WORKFLOW, SIMPLIFIED"
+msgstr "إجراءات دعم أكثر بساطة"
+
+msgid "Take a moment"
+msgstr "حاول بعد قليل"
+
+msgid "Technical Support"
+msgstr "الدعم الفني"
+
+msgid "Technical issue"
+msgstr "مشكلة تقنية"
+
+msgid "Tell us what you expected to happen."
+msgstr "اذكر النتيجة التي كنت تتوقعها."
+
+msgid "The employee must belong to this department."
+msgstr "يجب أن يكون الموظف عضوًا في هذا القسم."
+
+msgid "The file is not a PDF."
+msgstr "الملف ليس مستند PDF."
+
+msgid "The image content does not match its extension."
+msgstr "محتوى الصورة لا يطابق امتدادها."
+
+msgid "The image could not be validated."
+msgstr "تعذّر التحقق من سلامة الصورة."
+
+msgid "The kinds of questions coming in"
+msgstr "أنواع الطلبات الواردة"
+
+msgid "The last 14 days, at a glance"
+msgstr "نظرة على آخر 14 يومًا"
+
+msgid "The latest on your conversations and assignments."
+msgstr "آخر تحديثات محادثاتك والتذاكر المسندة إليك."
+
+msgid ""
+"The provider could not complete this analysis. Your ticket and conversation "
+"are unaffected."
+msgstr ""
+"تعذّر على المزوّد إكمال التحليل. يمكنك متابعة التذكرة والمحادثة كالمعتاد."
+
+msgid "The short version"
+msgstr "ملخص الطلب"
+
+msgid ""
+"There have been too many sign-in attempts. Please try again in an hour."
+msgstr "تجاوزت عدد المحاولات المسموح به. حاول مجددًا بعد ساعة."
+
+msgid "This link has expired or has already been used."
+msgstr "انتهت صلاحية الرابط أو تم استخدامه بالفعل."
+
+msgid "This space has a boundary."
+msgstr "الوصول إلى هذه المساحة مقيّد."
+
+msgid "This status transition is not allowed."
+msgstr "هذا الانتقال بين الحالات غير مسموح."
+
+msgid "This ticket is closed."
+msgstr "هذه التذكرة مغلقة."
+
+msgid ""
+"This ticket is queued for background analysis. Refresh this page in a "
+"moment."
+msgstr "التذكرة في قائمة التحليل بالخلفية. حدّث الصفحة بعد قليل."
+
+msgid "Thoughtful support, every step of the way."
+msgstr "دعم باهتمام في كل خطوة."
+
+msgid "Ticket"
+msgstr "التذكرة"
+
+msgid "Ticket activity"
+msgstr "نشاط التذاكر"
+
+msgid "Ticket created"
+msgstr "تم إنشاء التذكرة"
+
+msgid "Ticket details"
+msgstr "تفاصيل التذكرة"
+
+msgid "Ticket history"
+msgstr "سجل التذكرة"
+
+msgid "Ticket updated."
+msgstr "تم تحديث التذكرة."
+
+msgid "Ticket updates will appear here."
+msgstr "ستظهر تحديثات التذاكر هنا."
+
+msgid "Tickets"
+msgstr "التذاكر"
+
+msgid "Tickets by category"
+msgstr "التذاكر حسب الفئة"
+
+msgid "Tickets by priority"
+msgstr "التذاكر حسب الأولوية"
+
+msgid "Tickets by status"
+msgstr "التذاكر حسب الحالة"
+
+msgid "Tickets created"
+msgstr "التذاكر المنشأة"
+
+msgid "Tickets created in the last 14 days"
+msgstr "التذاكر المنشأة خلال آخر 14 يومًا"
+
+msgid ""
+"Tickets created per day over the last 14 days. Data is available in the "
+"table below."
+msgstr ""
+"عدد التذاكر المنشأة يوميًا خلال آخر 14 يومًا. البيانات متاحة في الجدول "
+"أدناه."
+
+msgid "Tickets · Smart Support Desk"
+msgstr "التذاكر · Smart Support Desk"
+
+msgid "Toggle navigation"
+msgstr "إظهار أو إخفاء قائمة التنقل"
+
+msgid "Total tickets"
+msgstr "إجمالي التذاكر"
+
+msgid "Transferring departments requires assignment permission."
+msgstr "يتطلب نقل التذكرة بين الأقسام صلاحية الإسناد."
+
+msgid "Triage details updated"
+msgstr "تم تحديث التصنيف والأولوية"
+
+msgid "Unassign this ticket before moving it to another team."
+msgstr "ألغِ إسناد التذكرة قبل نقلها إلى قسم آخر."
+
+msgid "Unassigned"
+msgstr "غير مسندة"
+
+msgid "Unassigned & active"
+msgstr "نشطة وغير مسندة"
+
+msgid "Update assignment"
+msgstr "تحديث الإسناد"
+
+msgid "Update password"
+msgstr "تحديث كلمة المرور"
+
+msgid "Update status"
+msgstr "تحديث الحالة"
+
+msgid "Updates as your request moves forward"
+msgstr "تحديثات مع تقدم معالجة طلبك"
+
+msgid "Upload file"
+msgstr "رفع الملف"
+
+msgid "Urgent"
+msgstr "عاجلة"
+
+msgid "Urgent & active"
+msgstr "عاجلة ونشطة"
+
+msgid "Urgent tickets"
+msgstr "التذاكر العاجلة"
+
+msgid "Use Assign to me to claim an available ticket."
+msgstr "استخدم «إسنادها إليّ» لتولي تذكرة متاحة."
+
+msgid "Use draft in reply"
+msgstr "استخدام المسودة في الرد"
+
+msgid "Username"
+msgstr "اسم المستخدم"
+
+msgid "View all tickets"
+msgstr "عرض كل التذاكر"
+
+msgid "View chart data"
+msgstr "عرض بيانات الرسم"
+
+msgid "View ticket"
+msgstr "عرض التذكرة"
+
+msgid "View urgent tickets"
+msgstr "عرض التذاكر العاجلة"
+
+msgid "WELCOME BACK"
+msgstr "مرحبًا بعودتك"
+
+msgid "WORKSPACE"
+msgstr "مساحة العمل"
+
+msgid "Waiting for customer"
+msgstr "بانتظار العميل"
+
+msgid "We couldn’t find that page, or it’s outside your workspace."
+msgstr "الصفحة غير موجودة أو خارج نطاق صلاحياتك."
+
+msgid "Welcome back · Smart Support Desk"
+msgstr "مرحبًا بعودتك · Smart Support Desk"
+
+msgid "We’ve hit a bump."
+msgstr "حدث خطأ غير متوقع."
+
+msgid "What happened? Include any steps, error messages and the impact."
+msgstr "ماذا حدث؟ اذكر الخطوات ورسائل الخطأ وتأثير المشكلة."
+
+msgid "Where conversations stand"
+msgstr "مراحل معالجة الطلبات"
+
+msgid ""
+"With a configured AI provider, review summaries, suggested priorities and "
+"draft responses in your workflow."
+msgstr ""
+"عند إعداد مزوّد الذكاء الاصطناعي، يمكنك مراجعة الملخصات والأولويات المقترحة "
+"ومسودات الردود أثناء عملك."
+
+msgid "Workspace"
+msgstr "مساحة العمل"
+
+msgid "Workspace navigation"
+msgstr "التنقل في مساحة العمل"
+
+msgid "Write a thoughtful reply…"
+msgstr "اكتب ردًا واضحًا يساعد العميل…"
+
+msgid "YOUR ACCOUNT"
+msgstr "حسابك"
+
+msgid "YOUR SUPPORT SPACE"
+msgstr "مساحة الدعم الخاصة بك"
+
+msgid "YOUR WORKSPACE AWAITS"
+msgstr "مساحة عملك بانتظارك"
+
+msgid "You cannot access this ticket."
+msgstr "لا تملك صلاحية الوصول إلى هذه التذكرة."
+
+msgid "You do not have permission to transfer tickets."
+msgstr "لا تملك صلاحية تحويل التذاكر."
+
+msgid "You may only claim an unassigned ticket for yourself."
+msgstr "يمكنك إسناد تذكرة غير مسندة إلى نفسك فقط."
+
+msgid "Your account doesn’t have permission to perform this action."
+msgstr "حسابك لا يملك صلاحية تنفيذ هذا الإجراء."
+
+msgid "Your active conversations"
+msgstr "محادثاتك النشطة"
+
+msgid "Your attention, please"
+msgstr "تذاكر تحتاج إلى متابعتك"
+
+msgid "Your new password is ready to use."
+msgstr "يمكنك الآن استخدام كلمة المرور الجديدة."
+
+msgid "Your password has been changed. Sign in to continue."
+msgstr "تم تغيير كلمة مرورك. سجّل الدخول للمتابعة."
+
+msgid "Your questions, conversations and updates. All in one place."
+msgstr "أسئلتك ومحادثاتك وتحديثاتك، كلها في مكان واحد."
+
+msgid "Your team takes it from here."
+msgstr "فريقك يتولى المتابعة."
+
+msgid "Your ticket is in. We’ll take it from here."
+msgstr "تم استلام تذكرتك. سيتابع فريق الدعم طلبك."
+
+msgid "Your ticket workspace"
+msgstr "مساحة إدارة التذاكر"
+
+msgid "Your tickets"
+msgstr "تذاكرك"
+
+msgid "Your updates"
+msgstr "آخر تحديثاتك"
+
+msgid "You’re all caught up"
+msgstr "لا توجد تحديثات جديدة"
+
+msgid "You’re all set"
+msgstr "تم كل شيء"
+
+msgid "You’re viewing all tickets in the workspace."
+msgstr "أنت تعرض جميع تذاكر مساحة العمل."
+
+msgid ""
+"You’re viewing assigned tickets and unassigned tickets in your departments."
+msgstr "أنت تعرض تذاكرك والتذاكر المسندة إليك وغير المسندة في أقسامك."
+
+msgid "conversation away."
+msgstr "بمحادثة."
+
+msgid "could use your attention."
+msgstr "تحتاج إلى متابعتك."
+
+msgid "of"
+msgstr "من"
+
+msgid "person."
+msgstr "إنسان."
+
+msgid "required"
+msgstr "مطلوب"
+
+msgid "statistics API"
+msgstr "واجهة API للإحصاءات"
+
+msgid "there’s a"
+msgstr "هناك"
+
+msgid "what matters."
+msgstr "لما يهم."
+
+msgid "· Smart Support Desk"
+msgstr "· Smart Support Desk"
+
+msgid "← Back to tickets"
+msgstr "العودة إلى التذاكر"

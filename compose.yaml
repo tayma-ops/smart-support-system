@@ -1,0 +1,95 @@
+# Local full-stack configuration. Put this behind HTTPS and apply production settings before public hosting.
+x-app: &app
+  build: .
+  env_file: .env
+  environment: &app-env
+    SECRET_KEY: ${SECRET_KEY:?Run scripts/bootstrap.py or set SECRET_KEY in .env}
+    USE_SQLITE: "False"
+    DB_HOST: postgres
+    DB_PORT: "5432"
+    DB_NAME: ${DB_NAME:-supportdesk}
+    DB_USER: ${DB_USER:-supportdesk}
+    DB_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    CELERY_BROKER_URL: redis://redis:6379/0
+    CACHE_URL: redis://redis:6379/1
+    CELERY_TASK_ALWAYS_EAGER: "False"
+  volumes:
+    - private_media:/app/media
+    - static_files:/app/staticfiles
+  init: true
+  security_opt:
+    - no-new-privileges:true
+
+services:
+  postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: ${DB_NAME:-supportdesk}
+      POSTGRES_USER: ${DB_USER:-supportdesk}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Set DB_PASSWORD in .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+
+  redis:
+    image: redis:8.10-alpine
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    restart: unless-stopped
+
+  migrate:
+    <<: *app
+    command: ["python", "scripts/container_init.py"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  web:
+    <<: *app
+    ports:
+      - "127.0.0.1:8000:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/', timeout=3).close()"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  celery:
+    <<: *app
+    command: ["celery", "-A", "config", "worker", "--loglevel=INFO", "--concurrency=2"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  beat:
+    <<: *app
+    command: ["celery", "-A", "config", "beat", "--loglevel=INFO", "--schedule=/tmp/celerybeat-schedule"]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:
+  private_media:
+  static_files:

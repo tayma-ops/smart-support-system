@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}
+  {% translate "Notifications · Smart Support Desk" %}
+{% endblock %}
+{% block breadcrumb %}
+  {% translate "Notifications" %}
+{% endblock %}
+{% block content %}
+  <div class="page-heading">
+    <div>
+      <div class="eyebrow">{% translate "STAY IN THE LOOP" %}</div>
+      <h1>{% translate "Your updates" %}</h1>
+      <p>{% translate "The latest on your conversations and assignments." %}</p></div></div><section class="panel notifications-panel">{% for item in page_obj %}<article class="notification-item {% if not item.is_read %}unread{% endif %}"><span class="metric-symbol mint">{% include "partials/icon.html" with name="bell" %}</span><div><strong>{{ item.display_message }}</strong><p>{{ item.created_at|date:'M j, Y · H:i' }} UTC</p></div><form method="post" action="{% url 'notification_read' item.pk %}">{% csrf_token %}<button type="submit" class="button button-outline">{% if item.is_read %}{% translate "View ticket" %}{% else %}{% translate "Read update" %}{% endif %}{% include "partials/icon.html" with name="arrow" %}</button></form></article>{% empty %}<div class="empty-state">{% include "partials/icon.html" with name="bell" %}<h2>{% translate "You’re all caught up" %}</h2>
+      <p>{% translate "Ticket updates will appear here." %}</p>
+      </div>
+{% endfor %}
+{% include "partials/pagination.html" %}
+</section>
+{% endblock %}

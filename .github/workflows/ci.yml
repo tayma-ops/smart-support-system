@@ -1,0 +1,88 @@
+name: Django checks and integration
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_DB: supportdesk
+          POSTGRES_USER: supportdesk
+          POSTGRES_PASSWORD: ci-only-ephemeral-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U supportdesk -d supportdesk"
+          --health-interval 5s --health-timeout 3s --health-retries 15
+      redis:
+        image: redis:8.10-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 3s --health-retries 15
+    env:
+      SECRET_KEY: ci-only-ephemeral-secret-key-never-use-in-production-1234567890
+      DJANGO_DEBUG: "True"
+      USE_SQLITE: "False"
+      DB_NAME: supportdesk
+      DB_USER: supportdesk
+      DB_PASSWORD: ci-only-ephemeral-password
+      DB_HOST: localhost
+      DB_PORT: "5432"
+      CELERY_BROKER_URL: redis://localhost:6379/0
+      CELERY_TASK_ALWAYS_EAGER: "False"
+      AI_API_KEY: ""
+      AI_MODEL: ""
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: "3.14"
+          cache: pip
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python scripts/compile_translations.py
+      - run: python -m ruff check .
+      - run: python -m black --check .
+      - run: python -m djlint templates --check
+      - run: python -m djlint templates --lint --profile=django
+      - run: python manage.py check
+      - run: python manage.py makemigrations --check --dry-run
+      - run: python manage.py test --settings=config.ci_settings
+      - run: python manage.py spectacular --file schema.yaml --validate --fail-on-warn
+      - run: python manage.py migrate --noinput
+      - run: python manage.py collectstatic --noinput
+      - name: Verify PostgreSQL, Redis, Celery and real local SMTP
+        run: python scripts/verify_worker_stack.py
+  docker:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+      - name: Generate isolated test configuration
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import secrets
+          Path('.env').write_text('\n'.join([
+              'SECRET_KEY=' + secrets.token_urlsafe(64),
+              'DB_PASSWORD=' + secrets.token_urlsafe(32),
+              'DJANGO_DEBUG=True',
+              'AI_PROVIDER=ai_service.providers.OpenAIProvider',
+              'EMAIL_NOTIFICATIONS=False',
+          ]) + '\n')
+          PY
+      - run: docker compose up --build -d --wait
+      - name: Check containerized services and HTTP workflow
+        run: |
+          docker compose exec -T web python scripts/verify_worker.py
+          docker compose exec -T web python scripts/smoke_http.py
+      - name: Stop test containers
+        if: always()
+        run: docker compose down

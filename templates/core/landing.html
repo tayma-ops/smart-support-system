@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}
+  {% translate "Smart Support Desk · Great support starts here" %}
+{% endblock %}
+{% block content %}
+  <section class="landing-hero">
+    <div class="eyebrow"><span class="online-dot"></span> {% translate "A BETTER WAY TO BE THERE" %}</div>
+    <h1>
+      {% translate "Behind every ticket," %}
+      <br>
+      {% translate "there’s a" %} <em>{% translate "person." %}</em>
+    </h1>
+    <p>{% translate "A thoughtful workspace for your support team. Bring conversations together, find clarity with AI, and give every customer the attention they deserve." %}</p>
+    <div class="hero-actions">
+      <a href="{% url 'register' %}"
+         class="button button-primary button-large">{% translate "Start a conversation" %}
+        {% include "partials/icon.html" with name="arrow" %}
+      </a><a href="{% url 'login' %}"
+             class="button button-outline button-large">{% translate "Sign in to your workspace" %}</a>
+    </div>
+    <div class="hero-caption">{% translate "One shared workspace. Clear ownership. A human at every step." %}</div>
+  </section>
+  <section class="landing-product"><div class="product-window-bar"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span><p>{% translate "THE SUPPORT WORKFLOW, SIMPLIFIED" %}</p></div><div class="workflow-steps"><article><span class="step-number">01</span>{% include "partials/icon.html" with name="inbox" %}<h2>{% translate "Every request, in one place." %}</h2>
+    <p>{% translate "Customers create tickets and follow the conversation from the first question to the final resolution." %}</p></article><article><span class="step-number">02</span>{% include "partials/icon.html" with name="sparkles" %}<h2>{% translate "Clarity before you reply." %}</h2>
+    <p>{% translate "With a configured AI provider, review summaries, suggested priorities and draft responses in your workflow." %}</p></article><article><span class="step-number">03</span>{% include "partials/icon.html" with name="people" %}<h2>{% translate "Your team takes it from here." %}</h2>
+    <p>{% translate "Assign ownership, collaborate through private notes, and keep customers informed as things move forward." %}</p>
+    </article>
+    </div>
+  </section>
+  <section class="landing-details">
+    <div>
+      <div class="eyebrow">{% translate "BUILT WITH INTENTION" %}</div>
+      <h2>
+        {% translate "Good support." %}
+        <br>
+        {% translate "Solid foundations." %}
+      </h2>
+    </div>
+    <div class="foundation-grid">
+      <article>
+        {% include "partials/icon.html" with name="lock" %}
+        <h3>{% translate "Access with boundaries" %}</h3>
+        <p>{% translate "Customers see their own tickets. Support teams work within their assigned scope." %}</p>
+      </article><article>
+        {% include "partials/icon.html" with name="chart" %}
+        <h3>{% translate "A clear view of your work" %}</h3>
+        <p>{% translate "Live statistics from your ticket data, including volume, priorities and resolution time." %}</p>
+      </article><article>
+        {% include "partials/icon.html" with name="code" %}
+        <h3>{% translate "Open to integration" %}</h3>
+        <p>{% translate "A documented REST API with JWT authentication and interactive OpenAPI documentation." %}</p>
+      </article><article>
+        {% include "partials/icon.html" with name="check-circle" %}
+        <h3>{% translate "People stay in control" %}</h3>
+        <p>{% translate "AI suggestions are drafts. A support employee reviews and sends every response." %}</p>
+      </article>
+    </div>
+  </section>
+{% endblock %}

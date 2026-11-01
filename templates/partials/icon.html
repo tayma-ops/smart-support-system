@@ -1,0 +1,8 @@
+{% load i18n support_i18n %}
+{% load static %}
+<svg class="icon icon-{{ name }}"
+     width="20"
+     height="20"
+     aria-hidden="true">
+  <use href="{% static 'icons.svg' %}#{{ name }}"></use>
+</svg>

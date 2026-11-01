@@ -1,0 +1,17 @@
+{% load i18n support_i18n %}
+<!DOCTYPE html>
+{% get_current_language as lang %}{% get_current_language_bidi as rtl %}
+<html lang="{{ lang }}" dir="{% if rtl %}rtl{% else %}ltr{% endif %}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% translate "Service unavailable · Smart Support Desk" %}</title>
+  </head>
+  <body>
+    <main>
+      <h1>{% translate "We’ve hit a bump." %}</h1>
+      <p>{% translate "Smart Support Desk is temporarily unavailable. Please try again in a moment." %}</p>
+      <a href="/">{% translate "Return home" %}</a>
+    </main>
+  </body>
+</html>

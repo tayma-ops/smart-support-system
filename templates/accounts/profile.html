@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}
+  {% translate "My profile · Smart Support Desk" %}
+{% endblock %}
+{% block breadcrumb %}
+  {% translate "My profile" %}
+{% endblock %}
+{% block content %}
+  <div class="page-heading">
+    <div>
+      <div class="eyebrow">{% translate "YOUR ACCOUNT" %}</div>
+      <h1>{% translate "A little about you" %}</h1>
+      <p>{% translate "Keep your details up to date." %}</p></div></div><div class="profile-layout"><section class="panel"><div class="profile-summary"><span class="avatar avatar-large">{{ user.display_name|first|upper }}</span><div><h2>{{ user.display_name }}</h2>
+      <span class="badge neutral">{{ user.get_role_display }}</span></div></div><form method="post">{% csrf_token %}{% include "partials/form_fields.html" %}<button type="submit" class="button button-primary">{% translate "Save changes" %}</button></form></section><aside class="panel"><h2>{% translate "Account details" %}</h2>
+      <dl class="details-list"><dt>{% translate "Username" %}</dt><dd>{{ user.username }}</dd><dt>{% translate "Email" %}</dt><dd>{{ user.email }}</dd><dt>{% translate "Member since" %}</dt><dd>{{ user.date_joined|date:'M j, Y' }}</dd>{% if user.is_support %}<dt>{% translate "Departments" %}</dt><dd>{% for dept in user.departments.all %}{{ dept.name|department_name }}{% if not forloop.last %}, {% endif %}{% empty %}{% translate "No departments assigned" %}{% endfor %}</dd>{% endif %}</dl><a href="{% url 'password_change' %}"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                class="button button-outline full-width">{% include "partials/icon.html" with name="lock" %} {% translate "Change password" %}</a></aside></div>{% endblock %}

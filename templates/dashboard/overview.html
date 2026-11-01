@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}
+  {% translate "Overview · Smart Support Desk" %}
+{% endblock %}
+{% block content %}
+  <div class="page-heading"><div><div class="eyebrow">{% if user.is_admin %}{% translate "ADMIN WORKSPACE" %}{% elif user.is_support %}{% translate "TEAM WORKSPACE" %}{% else %}{% translate "YOUR SUPPORT SPACE" %}{% endif %}</div><h1>{% translate "Good to see you," %} {{ user.first_name|default:user.username }}<span class="heading-dot">.</span></h1>
+    <p>
+      {% if user.is_support %}
+        {% translate "Here’s where things stand. Let’s move a few things forward." %}
+      {% else %}
+        {% translate "Your questions, conversations and updates. All in one place." %}
+      {% endif %}
+    </p>
+    </div>
+    <a href="{% url 'ticket_create' %}" class="button button-primary">
+      {% include "partials/icon.html" with name="plus" %}
+    {% translate "New ticket" %}</a>
+  </div>
+  <div class="metric-grid"><article class="metric-card"><div><span class="metric-label">{% translate "Total tickets" %}</span><span class="metric-symbol mint">{% include "partials/icon.html" with name="ticket" %}</span></div><strong>{{ stats.total }}</strong><p>{% translate "Across your workspace" %}</p></article><article class="metric-card"><div><span class="metric-label">{% translate "Open tickets" %}</span><span class="metric-symbol blue">{% include "partials/icon.html" with name="inbox" %}</span></div><strong>{{ stats.open }}</strong><p><span class="tiny-dot blue-dot"></span> {% translate "Ready for a first response" %}</p></article><article class="metric-card"><div><span class="metric-label">{% translate "In progress" %}</span><span class="metric-symbol amber">{% include "partials/icon.html" with name="clock" %}</span></div><strong>{{ stats.in_progress }}</strong><p>{% translate "Moving toward a resolution" %}</p></article><article class="metric-card"><div><span class="metric-label">{% translate "Resolved" %}</span><span class="metric-symbol green">{% include "partials/icon.html" with name="check-circle" %}</span></div><strong>{{ stats.resolved }}</strong><p><span class="tiny-dot green-dot"></span> {% translate "One less thing to worry about" %}</p></article></div>
+  <div class="dashboard-middle">
+    <section class="panel activity-panel">
+      <div class="panel-heading">
+        <div>
+          <h2>{% translate "Ticket activity" %}</h2>
+          <p>{% translate "The last 14 days, at a glance" %}</p></div><span class="legend"><i aria-hidden="true"></i> {% translate "Tickets created" %}</span></div><div class="activity-chart"><canvas id="activity-chart"
+                                                                                                                                                                                                        role="img"
+                                                                                                                                                                                                        aria-label="{% translate 'Tickets created per day over the last 14 days. Data is available in the table below.' %}"></canvas></div><details class="chart-data"><summary>{% translate "View chart data" %}</summary><table><thead><tr><th>{% translate "Date" %}</th><th>{% translate "Created" %}</th></tr></thead><tbody>{% for day in stats.daily %}<tr><td>{{ day.day }}</td><td>{{ day.count }}</td></tr>{% empty %}<tr><td colspan="2">{% translate "No tickets created in this period." %}</td></tr>{% endfor %}</tbody></table></details></section><aside class="focus-card"><div class="focus-icon">{% include "partials/icon.html" with name="sparkles" %}</div><span class="small-label">{% translate "A LITTLE FOCUS GOES A LONG WAY" %}</span><h2>{% translate "Make room for" %}<br>{% translate "what matters." %}</h2>
+      <p>{% if stats.urgent %}<strong>{% translate "Urgent tickets" %}: {{ stats.urgent }}</strong> {% translate "could use your attention." %}{% else %}{% translate "No urgent tickets in your queue. A good moment to keep things moving." %}{% endif %}</p><a href="{% url 'ticket_list' %}?priority=urgent"
+                                                                                                                                                                                                                                                                  class="button button-dark">{% translate "View urgent tickets" %} {% include "partials/icon.html" with name="arrow" %}</a><span class="focus-decoration" aria-hidden="true">✳</span></aside></div>
+    <section class="panel table-panel"><div class="panel-heading"><div><h2>{% if user.is_support %}{% translate "Your attention, please" %}{% else %}{% translate "Your active conversations" %}{% endif %} <span class="count-label">{{ recent_tickets|length }}</span></h2>
+      <p>{% translate "Active tickets, with the highest priorities first" %}</p>
+      </div>
+      <a href="{% url 'ticket_list' %}" class="link-arrow">{% translate "View all tickets" %}
+        {% include "partials/icon.html" with name="arrow" %}
+      </a>
+      </div>
+      {% include "partials/ticket_table.html" with tickets=recent_tickets %}
+    </section>
+    <div class="overview-footnote">
+      {% include "partials/icon.html" with name="lock" %}
+      {% if user.is_admin %}
+        {% translate "You’re viewing all tickets in the workspace." %}
+      {% elif user.is_support %}
+        {% translate "You’re viewing assigned tickets and unassigned tickets in your departments." %}
+      {% else %}
+        {% translate "Only you and your support team can access your tickets." %}
+      {% endif %}
+    </div>
+    {{ stats.daily|json_script:'activity-data' }}
+{% endblock %}

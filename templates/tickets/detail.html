@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}{{ ticket.ticket_number }} {% translate "· Smart Support Desk" %}{% endblock %}{% block breadcrumb %}{% translate "Ticket details" %}{% endblock %}{% block content %}
+<a class="back-link" href="{% url 'ticket_list' %}">{% translate "← Back to tickets" %}</a><div class="page-heading ticket-heading"><div><div class="eyebrow">{{ ticket.ticket_number }} <span class="eyebrow-divider">/</span> {{ ticket.department.name|department_name }}</div><h1>{{ ticket.subject }}</h1>
+<p>{% translate "Opened by" %} {{ ticket.customer.display_name }} · {{ ticket.created_at|date:'M j, Y · H:i' }} UTC</p></div><span class="badge status-{{ ticket.status }}"><span aria-hidden="true"></span>{{ ticket.get_status_display }}</span></div>
+<div class="ticket-detail-layout">
+  <div class="conversation-column">
+    <section class="panel conversation-panel">
+      <div class="panel-heading">
+        <h2>{% translate "Conversation" %}</h2>
+        <span class="muted">{% translate "Replies" %}: {{ replies|length }}</span></div><article class="conversation-message original-message"><div class="message-header"><span class="avatar">{{ ticket.customer.display_name|first|upper }}</span><div><strong>{{ ticket.customer.display_name }}</strong><span>{% translate "Customer · Original request" %}</span></div><time>{{ ticket.created_at|date:'M j · H:i' }}</time></div><div class="message-body">{{ ticket.description|linebreaksbr }}</div></article>{% for reply in replies %}<article class="conversation-message {% if reply.is_internal_note %}internal-message{% elif reply.author.is_support %}staff-message{% endif %}"><div class="message-header"><span class="avatar {% if reply.author.is_support %}avatar-staff{% endif %}">{{ reply.author.display_name|first|upper }}</span><div><strong>{{ reply.author.display_name }}</strong><span>{% if reply.is_internal_note %}{% include "partials/icon.html" with name="lock" %} {% translate "Internal note" %}{% else %}{{ reply.author.get_role_display }}{% endif %}</span></div><time>{{ reply.created_at|date:'M j · H:i' }}</time></div><div class="message-body">{{ reply.message|linebreaksbr }}</div></article>{% endfor %}</section>
+      {% if ticket.status != "closed" %}
+        <section class="panel reply-panel" id="reply-composer">
+          <h2>{% translate "Keep the conversation going" %}</h2>
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="reply">
+            {% include "partials/form_fields.html" with form=reply_form %}
+            <div class="form-actions">
+              <button class="button button-primary" type="submit">
+                {% include "partials/icon.html" with name="send" %}
+                {% translate "Send reply" %}
+              </button>
+              <span class="help-text">{% translate "Review your message before sending." %}</span>
+            </div>
+          </form>
+        </section>
+      {% else %}
+        <div class="closed-banner">
+          {% include "partials/icon.html" with name="check-circle" %}
+          {% translate "This ticket is closed." %}
+          {% if user.is_support %}
+            {% translate "Reopen it to continue the conversation." %}
+          {% else %}
+            {% translate "Create a new ticket if you need more help." %}
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if user.is_support %}
+        <section class="panel event-panel">
+          <h2>{% translate "Ticket history" %}</h2>
+          <ol class="event-list">{% for event in ticket.events.all %}<li><span class="tiny-dot green-dot"></span><div>{{ event.display_message }}<small>{{ event.created_at|date:'M j, Y · H:i' }} UTC</small></div></li>{% endfor %}</ol></section>{% endif %}</div>
+      <aside class="ticket-sidebar">{% if user.is_support %}<section class="panel ai-panel"><div class="panel-heading"><h2>{% include "partials/icon.html" with name="sparkles" %} {% translate "Support intelligence" %}</h2></div><span class="badge {% if ticket.ai_status == 'complete' %}status-resolved{% else %}neutral{% endif %}">{{ ticket.get_ai_status_display }}</span>{% if ticket.ai_status == "complete" %}<h3>{% translate "The short version" %}</h3>
+        <p>{{ ticket.ai_summary }}</p><div class="ai-sentiment">{% translate "Customer sentiment" %} <span class="badge sentiment-{{ ticket.sentiment }}">{{ ticket.get_sentiment_display }}</span></div><h3>{% translate "A starting point for your reply" %}</h3>
+        <blockquote>{{ ticket.ai_suggested_reply|linebreaksbr }}</blockquote>{% if ticket.status != "closed" %}<button class="button button-outline full-width"
+                                                                                                                       type="button"
+                                                                                                                       id="use-ai-draft">{% include "partials/icon.html" with name="plus" %} {% translate "Use draft in reply" %}</button>{% endif %}<p class="ai-caption">{% translate "AI-generated ·" %} {{ ticket.ai_model }}<br>{% translate "Review for accuracy. Nothing is sent automatically." %}</p>{{ ticket.ai_suggested_reply|json_script:'ai-draft' }}{% elif ticket.ai_status == "disabled" %}<p>{% translate "AI assistance is off. An administrator can enable an AI provider and model. You can manage and reply to this ticket as usual." %}</p><p class="ai-caption">{% translate "No AI-generated results are shown." %}</p>{% elif ticket.ai_status == "failed" %}<p>{% translate "The provider could not complete this analysis. Your ticket and conversation are unaffected." %}</p><p class="ai-caption">{% translate "An administrator can retry with" %} <code>retry_pending --retry-failed</code>.</p>{% else %}<p>{% translate "This ticket is queued for background analysis. Refresh this page in a moment." %}</p>{% endif %}</section>{% endif %}
+    <section class="panel">
+      <h2>{% translate "Ticket details" %}</h2>
+      <dl class="details-list"><dt>{% translate "Priority" %}</dt><dd><span class="priority priority-{{ ticket.priority }}"><i aria-hidden="true"></i>{{ ticket.get_priority_display }}</span></dd><dt>{% translate "Category" %}</dt><dd>{{ ticket.get_category_display }}</dd><dt>{% translate "Assigned to" %}</dt><dd>{% if ticket.assigned_to %}{{ ticket.assigned_to.display_name }}{% else %}{% translate "Unassigned" %}{% endif %}</dd><dt>{% translate "Department" %}</dt><dd>{{ ticket.department.name|department_name }}</dd><dt>{% translate "Last updated" %}</dt><dd>{{ ticket.updated_at|date:'M j · H:i' }} UTC</dd>{% if ticket.resolved_at %}<dt>{% translate "Resolved" %}</dt><dd>{{ ticket.resolved_at|date:'M j · H:i' }} UTC</dd>{% endif %}{% if ticket.closed_at %}<dt>{% translate "Closed" %}</dt><dd>{{ ticket.closed_at|date:'M j · H:i' }} UTC</dd>{% endif %}</dl>{% if user.is_support %}<hr><form method="post">{% csrf_token %}<input type="hidden" name="action" value="status">{% include "partials/form_fields.html" with form=status_form %}<button type="submit" class="button button-outline full-width">{% translate "Update status" %}</button></form><hr><form method="post">{% csrf_token %}<input type="hidden" name="action" value="triage">{% include "partials/form_fields.html" with form=triage_form %}<button type="submit" class="button button-outline full-width">{% translate "Save triage" %}</button></form>{% if can_transfer %}<hr><form method="post">{% csrf_token %}<input type="hidden" name="action" value="assign">{% include "partials/form_fields.html" with form=assign_form %}<button type="submit" class="button button-outline full-width">{% translate "Update assignment" %}</button></form>{% elif can_claim %}<form method="post">{% csrf_token %}<input type="hidden" name="action" value="claim"><button type="submit" class="button button-primary full-width">{% translate "Assign to me" %}</button></form>{% endif %}{% elif ticket.status != "closed" %}<form method="post">{% csrf_token %}<input type="hidden" name="action" value="close"><button type="submit" class="button button-outline full-width">{% include "partials/icon.html" with name="check-circle" %} {% translate "Close this ticket" %}</button></form>{% endif %}</section>
+    <section class="panel"><h2>{% translate "Attachments" %} <span class="count-label">{{ ticket.attachments.count }}</span></h2>
+      <ul class="attachment-list">{% for attachment in ticket.attachments.all %}<li>{% include "partials/icon.html" with name="file" %}<a href="{% url 'attachment_download' attachment.pk %}">{{ attachment.original_name }}</a></li>{% empty %}<li class="muted">{% translate "No attachments yet." %}</li>{% endfor %}</ul>{% if ticket.status != "closed" %}<form method="post" enctype="multipart/form-data">{% csrf_token %}<input type="hidden" name="action" value="attachment">{% include "partials/form_fields.html" with form=attachment_form %}<button type="submit" class="button button-outline full-width">{% translate "Upload file" %}</button></form>{% endif %}</section></aside></div>{% endblock %}

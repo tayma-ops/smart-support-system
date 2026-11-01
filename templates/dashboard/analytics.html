@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}{% translate "Analytics · Smart Support Desk" %}{% endblock %}{% block breadcrumb %}{% translate "Analytics" %}{% endblock %}{% block content %}<div class="page-heading"><div><div class="eyebrow">{% translate "THE BIGGER PICTURE" %}</div><h1>{% translate "Clarity in every number" %}<span class="heading-dot">.</span></h1>
+<p>{% translate "Live metrics from the tickets you’re permitted to see." %}</p></div><a href="{% url 'ticket_list' %}" class="button button-outline">{% translate "Explore tickets" %} {% include "partials/icon.html" with name="arrow" %}</a></div><div class="metric-grid"><article class="metric-card"><div><span class="metric-label">{% translate "Total tickets" %}</span>{% include "partials/icon.html" with name="ticket" %}</div><strong>{{ stats.total }}</strong><p>{% translate "All time, in your scope" %}</p></article><article class="metric-card"><div><span class="metric-label">{% translate "Average resolution" %}</span>{% include "partials/icon.html" with name="clock" %}</div><strong>{% if stats.average_resolution_hours is not None %}{{ stats.average_resolution_hours }}<small>h</small>{% else %}—{% endif %}</strong><p>{% translate "Created to resolved · current resolutions" %}</p></article><article class="metric-card"><div><span class="metric-label">{% translate "Urgent & active" %}</span>{% include "partials/icon.html" with name="alert" %}</div><strong>{{ stats.urgent }}</strong><p>{% translate "Excludes resolved and closed" %}</p></article><article class="metric-card"><div><span class="metric-label">{% translate "Unassigned & active" %}</span>{% include "partials/icon.html" with name="people" %}</div><strong>{{ stats.unassigned }}</strong><p>{% translate "Ready for an owner" %}</p></article></div><div class="analytics-grid"><section class="panel"><div class="panel-heading"><div><h2>{% translate "Tickets by status" %}</h2>
+<p>{% translate "Where conversations stand" %}</p>
+</div>
+{% include "partials/icon.html" with name="inbox" %}
+</div>
+<div class="breakdown" data-chart="status" data-total="{{ stats.total }}"></div>
+</section>
+<section class="panel">
+  <div class="panel-heading">
+    <div>
+      <h2>{% translate "Tickets by priority" %}</h2>
+      <p>{% translate "A view of what matters most" %}</p>
+    </div>
+    {% include "partials/icon.html" with name="alert" %}
+  </div>
+  <div class="breakdown"
+       data-chart="priority"
+       data-total="{{ stats.total }}"></div>
+</section>
+<section class="panel">
+  <div class="panel-heading">
+    <div>
+      <h2>{% translate "Tickets by category" %}</h2>
+      <p>{% translate "The kinds of questions coming in" %}</p>
+    </div>
+    {% include "partials/icon.html" with name="ticket" %}
+  </div>
+  <div class="breakdown"
+       data-chart="category"
+       data-total="{{ stats.total }}"></div>
+</section>
+<section class="panel">
+  <div class="panel-heading">
+    <div>
+      <h2>{% translate "Ticket activity" %}</h2>
+      <p>{% translate "Tickets created in the last 14 days" %}</p></div></div><div class="activity-chart"><canvas id="activity-chart"
+                                                                                                                  role="img"
+                                                                                                                  aria-label="{% translate 'Daily ticket volume; data is listed below.' %}"></canvas></div><table class="data-table"><thead><tr><th>{% translate "Date" %}</th><th>{% translate "Created" %}</th></tr></thead><tbody>{% for day in stats.daily %}<tr><td>{{ day.day }}</td><td>{{ day.count }}</td></tr>{% empty %}<tr><td colspan="2">{% translate "No activity in this period." %}</td></tr>{% endfor %}</tbody></table></section></div><noscript><p>{% translate "Enable JavaScript for charts, or view the" %} <a href="{% url 'api_dashboard' %}">{% translate "statistics API" %}</a>.</p></noscript>{{ stats|json_script:'analytics-data' }}{{ stats.daily|json_script:'activity-data' }}{% endblock %}

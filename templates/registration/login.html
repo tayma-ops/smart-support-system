@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}
+  {% translate "Welcome back · Smart Support Desk" %}
+{% endblock %}
+{% block content %}
+  <div class="auth-layout">
+    <section class="auth-story">
+      <div class="eyebrow">{% translate "WELCOME BACK" %}</div>
+      <h1>
+        {% translate "A fresh start." %}
+        <br>
+        {% translate "A clearer queue." %}
+      </h1>
+      <p>{% translate "Pick up where you left off and make someone’s day a little easier." %}</p><div class="auth-art" aria-hidden="true"><span class="art-ring"></span><span class="art-card art-card-one">{% include "partials/icon.html" with name="ticket" %} {% translate "A question worth answering" %}</span><span class="art-card art-card-two">{% include "partials/icon.html" with name="check-circle" %} {% translate "A little closer to resolved" %}</span><span class="art-spark">✳</span></div></section><section class="auth-card"><span class="small-label">{% translate "YOUR WORKSPACE AWAITS" %}</span><h2>{% translate "Sign in" %}</h2>
+      <p class="muted">{% translate "Good to have you here." %}</p>
+      <form method="post">
+        {% csrf_token %}
+        {% include "partials/form_fields.html" %}
+        {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+        <div class="form-aside"><a href="{% url 'password_reset' %}">{% translate "Forgot your password?" %}</a></div>
+        <button class="button button-primary full-width" type="submit">
+          {% translate "Sign in" %}
+          {% include "partials/icon.html" with name="arrow" %}
+        </button>
+      </form>
+      <p class="auth-switch">{% translate "New around here?" %} <a href="{% url 'register' %}">{% translate "Create an account" %}</a></p>
+      </section>
+    </div>
+{% endblock %}

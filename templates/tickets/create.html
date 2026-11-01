@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}
+  {% translate "New ticket · Smart Support Desk" %}
+{% endblock %}
+{% block breadcrumb %}
+  {% translate "New ticket" %}
+{% endblock %}
+{% block content %}
+  <a href="{% url 'ticket_list' %}" class="back-link">{% translate "← Back to tickets" %}</a>
+  <div class="page-heading">
+    <div>
+      <div class="eyebrow">{% translate "LET’S WORK THROUGH IT" %}</div>
+      <h1>{% translate "How can we help?" %}</h1>
+      <p>{% translate "Give us a little context. We’ll take it from there." %}</p>
+    </div>
+  </div>
+  <div class="create-layout">
+    <section class="panel">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include "partials/form_fields.html" %}
+        <div class="form-actions">
+          <button type="submit" class="button button-primary">
+            {% translate "Create ticket" %}
+            {% include "partials/icon.html" with name="arrow" %}
+          </button>
+          <a class="text-button" href="{% url 'ticket_list' %}">{% translate "Cancel" %}</a>
+        </div>
+      </form>
+    </section>
+    <aside>
+      <section class="tips-card">
+        <span class="metric-symbol mint">{% include "partials/icon.html" with name="file" %}</span>
+        <h2>{% translate "A good ticket goes a long way." %}</h2>
+        <ul>
+          <li>{% translate "Tell us what you expected to happen." %}</li>
+          <li>{% translate "Describe what actually happened." %}</li>
+          <li>{% translate "Include steps to reproduce the issue." %}</li>
+          <li>{% translate "Add a screenshot if it helps." %}</li>
+        </ul>
+        <div class="tip-divider"></div>
+        <p>
+          {% include "partials/icon.html" with name="lock" %}
+          {% translate "Please leave out passwords, payment details and other secrets." %}
+        </p>
+      </section>
+    </aside>
+  </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+[tool.ruff]
+target-version = "py314"
+extend-exclude = [".local"]
+
+[tool.ruff.lint]
+# Catch syntax errors, undefined names and unused imports without style churn.
+select = ["E9", "F"]

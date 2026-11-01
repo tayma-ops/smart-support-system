@@ -1,0 +1,96 @@
+{% load static i18n %}
+<!DOCTYPE html>
+{% get_current_language as current_language %}
+{% get_current_language_bidi as rtl %}
+<html lang="{{ current_language }}"
+      dir="{% if rtl %}rtl{% else %}ltr{% endif %}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#172d32">
+    <meta name="description"
+          content="{% translate 'A calmer workspace for customer support. Manage tickets, collaborate with your team and review AI-assisted drafts.' %}">
+    <title>{% block title %}Smart Support Desk{% endblock %}</title>
+    <link rel="icon" href="{% static 'favicon.svg' %}" type="image/svg+xml">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+    <script src="{% static 'js/app.js' %}" defer></script>
+    {{ ui_strings|json_script:'localized-ui' }}
+  </head>
+  <body class="{% if user.is_authenticated %}workspace{% else %}public{% endif %}">
+    <a class="skip-link" href="#main">{% translate "Skip to content" %}</a>
+    {% if user.is_authenticated %}
+      <aside class="sidebar"
+             id="sidebar"
+             aria-label="{% translate 'Workspace navigation' %}">
+        <button class="icon-button sidebar-close"
+                type="button"
+                aria-label="{% translate 'Close navigation' %}">×</button>
+        <a href="{% url 'dashboard' %}" class="brand"><span class="brand-mark">s<span>↗</span></span><span>smart<span class="brand-sub">SUPPORT DESK</span></span></a>
+        <div class="workspace-label"><span class="workspace-avatar">S</span><span>{% translate "Support workspace" %}<small>{{ user.get_role_display }}</small></span><span class="online-dot" title="{% translate 'Signed in' %}"></span></div>
+        <div class="nav-label">{% translate "WORKSPACE" %}</div>
+        {% with current=request.resolver_match.url_name %}
+          <nav class="nav-stack">
+            <a href="{% url 'dashboard' %}"
+               class="{% if current == 'dashboard' %}active{% endif %}"
+               {% if current == 'dashboard' %}aria-current="page"{% endif %}>
+              {% include "partials/icon.html" with name="grid" %}
+            {% translate "Overview" %}</a>
+            <a href="{% url 'ticket_list' %}"
+               class="{% if current == 'ticket_list' or current == 'ticket_detail' or current == 'ticket_create' %}active{% endif %}">
+              {% include "partials/icon.html" with name="ticket" %}
+            {% translate "Tickets" %}</a>
+            <a href="{% url 'analytics' %}"
+               class="{% if current == 'analytics' %}active{% endif %}">
+              {% include "partials/icon.html" with name="chart" %}
+            {% translate "Analytics" %}</a>
+            <a href="{% url 'notifications' %}"
+               class="{% if current == 'notifications' %}active{% endif %}">{% include "partials/icon.html" with name="bell" %}{% translate "Notifications" %}{% if unread_notifications %}<span class="nav-count">{{ unread_notifications }}</span>{% endif %}</a>
+          </nav>
+          <div class="nav-label nav-label-spaced">{% translate "MANAGE" %}</div>
+          <nav class="nav-stack">
+            <a href="{% url 'profile' %}"
+               class="{% if current == 'profile' %}active{% endif %}">
+              {% include "partials/icon.html" with name="user" %}
+            {% translate "My profile" %}</a>
+            {% if user.is_admin %}
+              <a href="{% url 'admin:index' %}">
+                {% include "partials/icon.html" with name="settings" %}
+              {% translate "Administration" %}</a>
+            {% endif %}
+            <a href="{% url 'swagger-ui' %}">
+              {% include "partials/icon.html" with name="code" %}
+              {% translate "API documentation" %}
+              {% include "partials/icon.html" with name="external" %}
+            </a>
+          </nav>
+        {% endwith %}
+        <div class="sidebar-bottom">
+          <div class="sidebar-note">
+            {% include "partials/icon.html" with name="sparkles" %}
+            <strong>{% translate "A little intelligence." %}
+              <br>
+            {% translate "A human touch." %}</strong>
+            <p>{% translate "AI drafts. Your team decides." %}</p>
+          </div>
+          <a class="sidebar-user" href="{% url 'profile' %}"><span class="avatar">{{ user.display_name|first|upper }}</span><span><strong>{{ user.display_name }}</strong><small>{{ user.get_role_display }}</small></span>{% include "partials/icon.html" with name="chevron" %}</a>
+        </div>
+      </aside>
+      <div class="app-shell">
+        <header class="topbar"><div class="topbar-left"><button class="icon-button menu-toggle"
+                                                                type="button"
+                                                                aria-label="{% translate 'Toggle navigation' %}"
+                                                                aria-controls="sidebar"
+                                                                aria-expanded="false">{% include "partials/icon.html" with name="menu" %}</button><span class="breadcrumb">{% translate "Workspace" %} <span>/</span> <strong>{% block breadcrumb %}{% translate "Overview" %}{% endblock %}</strong></span></div><div class="topbar-actions">{% include "partials/language_switch.html" %}<span class="today">{% now "D, M j" %}</span><a href="{% url 'notifications' %}"
+                                                                                                                                                                                                                                                                                                                                                                                                                                           class="icon-button notification-button"
+                                                                                                                                                                                                                                                                                                                                                                                                                                           aria-label="{% translate 'Notifications' %}{% if unread_notifications %}: {{ unread_notifications }}{% endif %}">{% include "partials/icon.html" with name="bell" %}{% if unread_notifications %}<span class="notification-dot"></span>{% endif %}</a><form action="{% url 'logout' %}" method="post">{% csrf_token %}<button class="text-button" type="submit">{% translate "Sign out" %}</button></form></div></header>
+    {% else %}
+      <header class="public-header"><a href="{% url 'landing' %}" class="brand"><span class="brand-mark">s<span>↗</span></span><span>smart<span class="brand-sub">SUPPORT DESK</span></span></a><nav>{% include "partials/language_switch.html" %}<a href="{% url 'swagger-ui' %}" class="desktop-only">{% translate "Explore the API" %}</a><a href="{% url 'login' %}" class="text-button">{% translate "Sign in" %}</a><a href="{% url 'register' %}" class="button button-primary">{% translate "Get started" %} {% include "partials/icon.html" with name="arrow" %}</a></nav></header>
+    {% endif %}
+    <main id="main"
+          class="{% if user.is_authenticated %}main-content{% else %}public-main{% endif %}">
+      {% if messages %}<div class="flash-stack" role="status">{% for message in messages %}<div class="flash {{ message.tags }}">{% include "partials/icon.html" with name="check" %}{{ message }}</div>{% endfor %}</div>{% endif %}
+      {% block content %}{% endblock %}
+    </main>
+    {% if user.is_authenticated %}<footer class="workspace-footer"><span>Smart Support Desk</span><span>{% translate "Thoughtful support, every step of the way." %}</span><span>v1.0</span></footer></div>{% else %}<footer class="public-footer"><span>© {% now "Y" %} Smart Support Desk</span><span>{% translate "Made for people. Built with Django." %}</span></footer>{% endif %}
+</body>
+</html>

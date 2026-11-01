@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% load i18n support_i18n %}
+{% block title %}{% translate "Page not found · Smart Support Desk" %}{% endblock %}{% block content %}<section class="error-page"><span class="error-code">404</span><h1>{% translate "A small detour." %}</h1>
+<p>{% translate "We couldn’t find that page, or it’s outside your workspace." %}</p>
+<a href="{% url 'dashboard' %}" class="button button-primary">{% translate "Back to your workspace" %}</a>
+</section>
+{% endblock %}
