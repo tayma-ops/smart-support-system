@@ -1,21 +1,33 @@
-# Screenshot capture plan
+# Real application screenshots
 
-This directory reserves filenames for real captures of existing application pages. No image files or UI mockups have been generated. Capture the six images below in order; use all six in the README, or use **1, 3, 4 and 5** for a compact four-image selection.
+Captured and visually reviewed on **1 November 2026** from the actual localhost Django application using Chromium 153.0.8010.12. PostgreSQL, Redis, Celery and the local model were started using the existing native development setup. All six PNGs are embedded in the root README.
 
-## Recommended README selection, in order
+Only existing fictional demo accounts and `[Demo]` tickets were used. No credentials, personal emails, tokens, filesystem paths or real customer data appear in the images. External browser requests were blocked; application responses were not mocked and no UI content was injected. No generated images were used.
 
-| Order / filename | Existing page and role | Viewport | Capture instructions |
+## Published captures
+
+| Order / filename | Existing page and role | Viewport | Captured content |
 | --- | --- | --- | --- |
-| 1. `01-dashboard.png` | Employee, `/dashboard/` | 1440 × 1000 | English overview with scoped metrics, activity and the priority queue. This is the first portfolio image. |
-| 2. `02-ticket-list.png` | Employee, `/tickets/` | 1440 × 1000 | Show several labeled demo tickets and the search/filter controls. Use a broad result set so the page communicates the workflow. |
-| 3. `03-ticket-details.png` | Employee, a visible ticket at `/tickets/<id>/` | 1440 × 1000 | Show public conversation, a staff-only internal note, status and assignment. Use an actual ID from the list. |
-| 4. `04-ai-human-review.png` | Employee, the same ticket with completed real AI analysis | 1440 × 1000 | Show the generated suggestion and human-review controls. Click **Use draft in reply**, edit the composer if needed and capture before clicking **Send reply**. The suggestion and review are parts of the ticket page, not separate pages. |
-| 5. `05-arabic-rtl.png` | Employee, `/dashboard/` after switching to Arabic | 1440 × 1000 | Show translated labels, RTL navigation and real scoped metrics. |
-| 6. `06-mobile-ticket.png` | Ticket owner, `/tickets/<id>/` | 390 × 844 | Show readable ticket content and mobile controls. Check the menu open/close behavior first; use the clearest final view. |
+| 1. `01-dashboard.png` | Employee, `/dashboard/` | 1440 × 1000 | English overview with scoped metrics, activity and the priority queue. |
+| 2. `02-ticket-list.png` | Employee, `/tickets/` | 1440 × 1000 | Existing demo tickets with search, filters, status and ownership. |
+| 3. `03-ticket-details.png` | Employee, `/tickets/3/` | 1440 × 1060 | Public conversation, reply composer, internal-note option and assignment details. |
+| 4. `04-ai-human-review.png` | Employee, the same ticket | 1440 × 1060 | A genuine 1126 × 745 browser capture region showing the AI suggestion and populated composer. No reply was sent. |
+| 5. `05-arabic-rtl.png` | Employee, `/dashboard/` after switching to Arabic | 1440 × 1000 | Translated labels, RTL navigation and the same scoped metrics. |
+| 6. `06-mobile-ticket.png` | Ticket owner, `/tickets/3/` | 390 × 844 | Full-page capture, 390 × 1832, with readable conversation and customer controls. |
 
-The existing demo ticket with subject `[Demo] Production dashboard is unavailable` has genuinely generated local-model analysis in this checkout. Use a visible, genuinely analyzed demo ticket; do not type invented AI output into the database. An internal note must be real synthetic content added through the staff workflow. Avoid changing existing demo data solely for a screenshot if a suitable ticket is already present.
+The existing ticket `[Demo] Production dashboard is unavailable` has genuine saved Qwen3-0.6B-Q4_K_M analysis from the earlier local inference verification. The real **Use draft in reply** button copied that suggestion into the composer. The screenshot demonstrates the review step; it does not claim a new model run or a sent reply. Existing tickets, replies, AI output, assignments and password hashes were preserved. No internal note was invented for capture.
 
-## Optional alternatives that also exist
+## Browser review completed
+
+- All six final images were opened and inspected for readable content, clipping, layout and sensitive information.
+- English and Arabic dashboards had no document-level horizontal overflow at 1440, 1024, 768, 760, 390 and 320 pixels. RTL mobile ticket-list overflow was also checked. Wide tables retain their own horizontal scrolling.
+- A tablet overflow issue caused by an absolutely positioned screen-reader label escaping its table scroller was fixed with `position: relative` on `.table-scroll`. This is the only application source change and affects layout containment only.
+- Mobile navigation opened, closed with Escape and restored focus to its toggle. The customer view contained no staff AI panel or internal-note control; an unrelated customer received 404 for the same ticket.
+- Loading the AI draft left the API record unchanged. No reply was submitted. Browser checks reported no JavaScript exceptions or server errors.
+
+This is a focused visual and interaction review of the displayed workflows, not an exhaustive accessibility, cross-browser or production certification. The full backend suite was not repeated for screenshots and this CSS-only adjustment. Private capture scripts, session state and detailed evidence remain under ignored `.local/`.
+
+## Optional future captures
 
 | Filename | Existing page | When to use it |
 | --- | --- | --- |
@@ -32,6 +44,6 @@ The existing demo ticket with subject `[Demo] Production dashboard is unavailabl
 2. Use synthetic `[Demo]` records and 100% zoom. Hide password-manager overlays, developer tools, tokens, reset URLs, personal emails and filesystem paths.
 3. Check the same ticket as staff, its owner and an unrelated customer. The owner must not see staff-only material; the unrelated customer must not gain access.
 4. Check focus visibility, Tab/Shift+Tab, Escape, focus restoration, validation messages, long Arabic text, 200% zoom and the 760px breakpoint. A screenshot alone does not prove accessibility or responsiveness.
-5. Save the selected PNGs under the exact filenames above. Replace the root README's reserved slots with image embeds only after the actual files exist.
+5. Save the selected PNGs under the exact filenames above. Keep the README embeds and capture notes consistent with any new captures.
 
-Browser visual QA is still pending. The application has HTML/HTTP and localization tests; those tests are not a claim that screenshots or mobile browser testing have been completed.
+The six published captures and the focused checks above supersede the earlier pending-screenshot notes. The checklist also includes broader checks, such as 200% zoom and exhaustive keyboard traversal, which were not all performed in this capture session.

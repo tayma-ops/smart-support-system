@@ -2,7 +2,7 @@
 
 This inventory excludes private settings, databases, model weights, portable tools, runtime files, credentials and backups.
 
-Total: **130 source/documentation files**.
+Total: **136 tracked source, documentation and screenshot files**.
 
 - `.dockerignore`
 - `.editorconfig`
@@ -63,6 +63,12 @@ Total: **130 source/documentation files**.
 - `docs/PORTFOLIO-REVIEW.ar.md`
 - `docs/REPORT.ar.md`
 - `docs/VERIFICATION.md`
+- `docs/screenshots/01-dashboard.png`
+- `docs/screenshots/02-ticket-list.png`
+- `docs/screenshots/03-ticket-details.png`
+- `docs/screenshots/04-ai-human-review.png`
+- `docs/screenshots/05-arabic-rtl.png`
+- `docs/screenshots/06-mobile-ticket.png`
 - `docs/screenshots/README.md`
 - `locale/ar/LC_MESSAGES/django.mo`
 - `locale/ar/LC_MESSAGES/django.po`

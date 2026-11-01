@@ -15,9 +15,9 @@ A Python / Django portfolio project with **PostgreSQL, a scoped REST API, Redis,
 - **Human-reviewed AI:** summaries, suggested triage and editable drafts; generated text is never sent to customers automatically.
 - **Verification:** 83 PostgreSQL tests, including concurrency and security cases; native customer/staff HTTP, local-model and SMTP checks; and a [successful GitHub Actions run](https://github.com/tayma-ops/smart-support-system/actions/runs/41319932659) covering Linux tests, Docker Compose and worker/HTTP integration. See the [verification record](docs/VERIFICATION.md).
 
-Docker Compose and Linux CI have been verified on GitHub Actions. Browser visual QA and screenshots remain pending; no public application deployment is claimed.
+Docker Compose and Linux CI have been verified on GitHub Actions. Real desktop, Arabic RTL and mobile captures are included below, with a focused browser review. No public application deployment is claimed.
 
-[Engineering guide](docs/ENGINEERING.md) · [API reference](docs/ENGINEERING.md#rest-api) · [Screenshot plan](docs/screenshots/README.md) · [Arabic readiness report](docs/GITHUB-READINESS.ar.md)
+[Engineering guide](docs/ENGINEERING.md) · [API reference](docs/ENGINEERING.md#rest-api) · [Screenshot notes](docs/screenshots/README.md) · [Arabic readiness report](docs/GITHUB-READINESS.ar.md)
 
 ## Why This Project Is More Than a CRUD Application
 
@@ -230,18 +230,43 @@ Uploads have size/type/structure validation and private, no-store downloads; the
 
 ## Screenshots
 
-The six slots below are reserved for real application captures. Save the PNG files in `docs/screenshots/` before adding image embeds; no screenshots or image links are fabricated.
+Captured from the running Django application using fictional `[Demo]` records. These are real browser screenshots, with no generated UI or mocked responses. [Capture details and review scope](docs/screenshots/README.md).
 
-| Order | Screenshot | Reserved filename |
-| --- | --- | --- |
-| 1 | Employee dashboard: scoped metrics, activity and priority queue | `01-dashboard.png` |
-| 2 | Ticket list: search, filtering, status and ownership | `02-ticket-list.png` |
-| 3 | Ticket details: conversation, private note and workflow controls | `03-ticket-details.png` |
-| 4 | AI suggestion and employee review in the reply composer | `04-ai-human-review.png` |
-| 5 | Arabic dashboard with RTL navigation | `05-arabic-rtl.png` |
-| 6 | Mobile ticket view with responsive navigation | `06-mobile-ticket.png` |
+### 1. Employee Dashboard
 
-Use all six, or retain **1, 3, 4 and 5** for a compact four-image overview. Home and login pages exist and are optional alternatives. [The capture plan](docs/screenshots/README.md) gives exact pages, roles, viewports and privacy checks. Browser visual QA and screenshots remain pending.
+Role-scoped metrics, ticket activity and a queue ordered by priority.
+
+![Employee dashboard with ticket metrics, activity chart and priority queue](docs/screenshots/01-dashboard.png)
+
+### 2. Ticket List
+
+Search, filters, ownership, status and priority in one workspace.
+
+![Employee ticket list with search, filters and fictional support requests](docs/screenshots/02-ticket-list.png)
+
+### 3. Ticket Details
+
+Customer conversation, staff reply controls, assignment and AI context.
+
+![Ticket details with customer conversation, reply composer and staff controls](docs/screenshots/03-ticket-details.png)
+
+### 4. AI Suggestion + Human Review
+
+The existing local-model suggestion is loaded through **Use draft in reply**. The editable composer and **Send reply** button remain under staff control. No reply was submitted during capture.
+
+![Real AI suggestion alongside the populated reply composer, ready for staff review](docs/screenshots/04-ai-human-review.png)
+
+### 5. Arabic RTL Dashboard
+
+The same employee workspace after switching to Arabic, with mirrored navigation and translated controls.
+
+![Arabic employee dashboard with right-to-left navigation and translated metrics](docs/screenshots/05-arabic-rtl.png)
+
+### 6. Mobile Ticket View
+
+The customer view at a 390 × 844 viewport, captured as a full page. Staff-only AI suggestions and internal-note controls are absent.
+
+<img src="docs/screenshots/06-mobile-ticket.png" alt="Full-page mobile customer ticket view with conversation, reply form and ticket details" width="390">
 
 ## Project structure
 
@@ -257,12 +282,12 @@ static/          CSS, JavaScript and SVG assets
 locale/ar/       Arabic gettext source and compiled translations
 tests/           Workflow, security, task, localization and concurrency tests
 scripts/         Bootstrap, dependency locking and integration checks
-docs/            Engineering, verification, screenshot plan and Arabic reports
+docs/            Engineering, verification, real screenshots and Arabic reports
 ```
 
 ## Next steps
 
-Capture real desktop/mobile screenshots and complete browser visual QA. Evaluate a stronger local model with representative cases. Production extensions include email verification/MFA, malware scanning, monitoring, retention policies and tested backup restoration. These are future work.
+Evaluate a stronger local model with representative cases and prepare a hosted demonstration. Production extensions include email verification/MFA, malware scanning, monitoring, retention policies and tested backup restoration. These are future work.
 
 ## Developer
 

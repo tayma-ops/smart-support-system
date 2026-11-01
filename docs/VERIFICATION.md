@@ -1,5 +1,13 @@
 # Verification record
 
+## Real screenshots and focused browser review — 1 November 2026
+
+Six real Chromium captures are now included in the [README gallery](../README.md#screenshots): employee dashboard, ticket list, ticket details, an actual AI suggestion copied into the unsent reply composer, Arabic RTL dashboard and the mobile customer ticket view. Only the existing synthetic demo data and genuine saved local-model analysis were used. No mocked responses, injected UI content or generated images were used.
+
+The final PNGs were visually inspected. English/Arabic dashboards were checked at 1440, 1024, 768, 760, 390 and 320 pixels, and the RTL mobile ticket list was checked. One CSS containment rule fixes tablet overflow from a screen-reader label inside a scrollable table. No backend, template workflow, permission, data model or API code changed. The mobile menu opened, closed with Escape and restored focus; staff AI/internal-note controls were absent for the customer; an unrelated customer received 404. Clicking **Use draft in reply** populated the composer without submitting or changing the API record. No JavaScript exceptions or HTTP 5xx responses were observed.
+
+Existing domain records and password hashes were preserved; ordinary demo sign-ins updated login timestamps and created browser sessions. The backend suite was not rerun for these screenshot/documentation/CSS changes. This focused review supersedes the older browser-unavailable and screenshot-pending statements below. It is not an exhaustive accessibility, cross-browser or production review. [Capture details](screenshots/README.md). Private evidence: `.local/screenshot-evidence/capture-results.json`.
+
 ## Published repository and GitHub Actions
 
 The public repository is [tayma-ops/smart-support-system](https://github.com/tayma-ops/smart-support-system), on `main`. The initial application commit is `e629738ca376b3b34397be72ff5f10c873fa6d1c`. Its [first CI run, 41319932659](https://github.com/tayma-ops/smart-support-system/actions/runs/41319932659), completed successfully on 1 November 2026:
@@ -10,7 +18,7 @@ The public repository is [tayma-ops/smart-support-system](https://github.com/tay
 | Worker/SMTP integration in `test` | Real PostgreSQL → Redis → Celery no-key fallback and a synthetic notification accepted by a local SMTP sink |
 | `docker` | Image build and `docker compose up --build -d --wait` passed; containerized worker round trip and full HTTP smoke workflow passed; containers cleaned up |
 
-These results establish Linux CI and Docker development-stack execution. They supersede the earlier pre-publication statements below about Docker/remote CI being unverified. Docker was not installed on the Windows workstation. The remote CI model check uses explicit no-key behavior; real local-model inference was verified separately on Windows. Browser visual QA, cloud inference, external mailbox delivery and public application deployment remain unverified.
+These results establish Linux CI and Docker development-stack execution. They supersede the earlier pre-publication statements below about Docker/remote CI being unverified. Docker was not installed on the Windows workstation. The remote CI model check uses explicit no-key behavior; real local-model inference was verified separately on Windows. Cloud inference, external mailbox delivery and public application deployment remain unverified. The later screenshot review is recorded above.
 
 Before the first push, all 130 Git index blobs were scanned for actual local secrets, demo passwords and common private-key/token patterns. Runtime files and local data were excluded. Local evidence: `.local/staged-release-scan.json`, `.local/github-first-ci.json` and `.local/github-first-ci.log`.
 
@@ -96,14 +104,14 @@ See `docs/LOCAL-SETUP.ar.md` for this checkout's ports, local artifacts and rest
 - Docker execution on the original Windows workstation: not performed. Linux image/Compose execution passed in the published CI run above.
 - OpenAI cloud inference: its adapter was contract-tested with mocks; no cloud key was supplied. Real local inference was verified separately.
 - Delivery to an external mailbox: SMTP protocol delivery was verified locally, not with a real external provider/account.
-- Desktop/mobile browser visual QA: the browser access host was unavailable. Computer Use stopped because it could not determine the Windows browser URL confidently enough to enforce policy. No further UI automation was attempted. HTML/HTTP tests do not replace visual inspection, and no screenshots were invented.
+- Full accessibility and cross-browser review: the focused Chromium review above covers the six captures and listed interactions. It does not establish every browser, 200% zoom or an exhaustive assistive-technology audit.
 - Public deployment, real customer workloads and model quality/accuracy benchmarking.
 
 ## Artifacts
 
 - `README.md`: recruiter overview and installation; `docs/ENGINEERING.md`: detailed architecture, API and operations.
 - `docs/PORTFOLIO-REVIEW.ar.md`: latest Arabic portfolio audit and honest readiness score.
-- `docs/screenshots/README.md`: real capture plan; no image files are fabricated.
+- `docs/screenshots/README.md`: six real PNGs, capture details and focused review results; no image files are fabricated.
 - `docs/REPORT.ar.md`: Arabic delivery report, GitHub description/topics and CV examples.
 - `docs/FILES.md`: deliverable source inventory.
 - `.local/postgres-tests.log`, `.local/sqlite-tests.log`: actual local suite output.

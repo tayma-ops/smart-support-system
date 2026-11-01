@@ -375,18 +375,16 @@ The helper runs a temporary worker on a unique queue and a local SMTP sink, then
 
 ## Screenshots
 
-Screenshots are not included: browser automation could not complete a visual review in this environment. Do not present invented images as working screens. The [capture plan](screenshots/README.md) specifies filenames, roles, viewports and review criteria.
+Six real screenshots are included in the [README gallery](../README.md#screenshots), using existing fictional demo records and genuine saved local-model analysis. The [capture notes](screenshots/README.md) record roles, viewports, privacy checks and the focused Chromium review.
 
-After starting the app, capture these real screens with clearly labeled `[Demo]` data:
+The captured screens use clearly labeled `[Demo]` data:
 
 1. Employee overview: metrics, activity chart and priority queue.
-2. Ticket conversation with a public reply and a staff-only internal note.
-3. Customer view of the same ticket demonstrating that the note and AI draft are absent.
-4. Analytics and filters.
-5. Swagger with authenticated ticket endpoints.
-6. Mobile ticket details.
-7. AI assistance with genuinely generated local-model results, alongside the employee review controls.
-8. The Arabic interface and RTL navigation.
+2. Employee ticket list with search, filters, ownership, status and priority.
+3. Ticket details with a public conversation, reply composer and staff controls.
+4. Genuine local-model suggestion copied into the unsent reply composer for review.
+5. The same employee dashboard in Arabic with RTL navigation.
+6. Full-page mobile customer ticket details, without staff AI or internal-note controls.
 
 ## Project structure
 
@@ -411,7 +409,7 @@ schema.yaml               Generated OpenAPI snapshot
 ## Future improvements and explicit limits
 
 - Attachments belong to tickets, rather than individual replies. Malware scanning and external private object storage are future work.
-- Cloud AI, external mailbox delivery and browser/mobile visual QA still require the corresponding environment. Linux Docker/Compose passed in GitHub Actions; real local inference, native PostgreSQL/Redis/Celery and local SMTP protocol delivery were verified separately.
+- Cloud AI and external mailbox delivery still require the corresponding environment. The focused Chromium screenshot review is complete; exhaustive accessibility and cross-browser checks remain future work. Linux Docker/Compose passed in GitHub Actions; real local inference, native PostgreSQL/Redis/Celery and local SMTP protocol delivery were verified separately.
 - Add SLA policies, account email verification, MFA, a knowledge base, WebSockets, and provider evaluation datasets only when required.
 - Add a privacy/retention policy and operational backups before real customer use.
 
@@ -425,4 +423,4 @@ Suggested topics: `python`, `django`, `django-rest-framework`, `postgresql`, `re
 
 ## Author
 
-Maintainer: **Atallah Alrashoud**, Python & Django Developer, Saudi Arabia. GitHub: [tayma-ops](https://github.com/tayma-ops). The [Developer section](../README.md#developer) reserves the LinkedIn link for the owner to complete. Project code is [MIT licensed](../LICENSE); third-party libraries, tools and model weights retain their own licenses. Model weights and native tools are not redistributed in this repository.
+Maintainer: **Atallah Alrashoud**, Python & Django Developer, Saudi Arabia. GitHub: [tayma-ops](https://github.com/tayma-ops). LinkedIn is linked in the [Developer section](../README.md#developer). Project code is [MIT licensed](../LICENSE); third-party libraries, tools and model weights retain their own licenses. Model weights and native tools are not redistributed in this repository.
